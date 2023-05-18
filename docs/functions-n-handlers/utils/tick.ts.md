@@ -6,28 +6,49 @@ title: tick.ts
 path: [`/src/utils/tick.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/tick.ts)
 
 ### createTick()
-
 ```
 Params:
- - 
+ - tickId (String): ID of the tick instance to create. Format: <pool address>#<tick index>
+ - tickIdx (i32): Tick index
+ - poolId (string): PoolId
+ - event (MintEvent): The mint event where liquidity was added to the tick
 ```
+Initializes a new Tick to store the liquidity present in at the specific tick.
 
-Dependencies:
-1. []
+Sets `tick.id`, `tick.tickIdx`, `tick.pool` and `tick.poolId` from the parametrs. Sets `tick.creatdAtTimeStamp` and `tick.createdAtBlockNumber` from `event.block.timestamp` and `event.block.number` respectively.
 
-Invoked at:
-1. []
+`tick.price0` is calcualted as `1.0001^tickIdx` and `tick.price1` as `safeDiv(ONE_BD, price0)`.
+
+All the other parameters are initialized to `ZERO_BD` or `ZERO_BI`.
+
+#### Entites:
+1. [Tick](../../schemas/tick.md) - Create
+
+#### Dependencies:
+1. [ZERO_BI](./constants.ts#zero_bi)
+2. [ONE_BD](./constants.ts#one_bd)
+3. [ZERO_BD](./constants.ts#zero_bd)
+4. [bigDecimalExponated()](./index.ts#bigdecimalexponated)
+5. [safeDiv()](./index.ts#safediv)
+
+#### Invoked at:
+1. [handleMint()](../mappings/core.ts#handlemint)
 
 
 ### feeTierToTickSpacing()
-
 ```
 Params:
- - 
+ - feeTier (BigInt): The fee tier specified for the pool
 ```
+Given a specific fee tier, returns a BigInt value for the respective tick spacing used in the pool contract.
 
-Dependencies:
-1. []
+|Fee Tier|TickSpaceing Returned|
+|--|---|
+| 10000 | 200 |
+| 3000 | 60 |
+| 500 | 10 |
+| 100 | 1 |
+| Anything Else | Error: 'Unexpected fee tier'|
 
-Invoked at:
-1. []
+#### Invoked at:
+1. [handleSwap()](../mappings/core.ts#handleswap)

@@ -162,8 +162,8 @@ Params:
 Returns a [Transaction](../../schemas/transaction.md) instance for the specified event. If a transaction instance doesn't already exit for the event, it's created and then returned. Uses `event.transaction.hash.toHexString()` to find the relevant transaction or to create a new transaction instance.
 Uses `event` parameters `block.blockNumber`, `block.timestamp`, `transaction.gasUsed` and `transaction.gasPrice` to populate `transaction`'s fields.
 
-#### Entites Touched:
-1. [Transaction](../../schemas/transaction.md) - Read/Write
+#### Entites:
+1. [Transaction](../../schemas/transaction.md) - Read/Create & Write
 
 #### Invoked at:
 1. [getPosition()](../mappings/position-manager.ts#getposition)
