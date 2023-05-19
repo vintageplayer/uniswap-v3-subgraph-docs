@@ -12,6 +12,8 @@ Params:
  - tickIdx (i32): Tick index
  - poolId (string): PoolId
  - event (MintEvent): The mint event where liquidity was added to the tick
+
+ReturnType: Tick
 ```
 Initializes a new Tick to store the liquidity present in at the specific tick.
 
@@ -39,6 +41,8 @@ All the other parameters are initialized to `ZERO_BD` or `ZERO_BI`.
 ```
 Params:
  - feeTier (BigInt): The fee tier specified for the pool
+
+ReturnType: BigInt
 ```
 Given a specific fee tier, returns a BigInt value for the respective tick spacing used in the pool contract.
 

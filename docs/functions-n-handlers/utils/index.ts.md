@@ -9,6 +9,8 @@ path: [`/src/utils/index.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/s
 ```
 Params:
  - decimals (BigInt): The power of ten to return.
+
+ReturnType: BigDecimal
 ```
 Returns the number `1` followed by `decimals` number of `0s` with type BigDecimal.  
 It uses a for loop to iterate between `0` and `decimals` and multiplies the previous result by `10`. Thus, only positive values are possible.
@@ -30,6 +32,8 @@ It uses a for loop to iterate between `0` and `decimals` and multiplies the prev
 Params:
  - amount0 (BigDecimal): Numerator for the division
  - amount1 (BigDecimal): Denominator for the division
+
+ReturnType: BigDecimal
 ```
 Return `0` if parameter `amount1` is equal to `ZERO_BD`. <br/>
 Else returns the result of dividing `amount0` by `amount1` using `BigDecimal`'s `div()` method.
@@ -47,6 +51,8 @@ Else returns the result of dividing `amount0` by `amount1` using `BigDecimal`'s 
 Params:
  - value (BigDecimal): value to be raised to a certain power
  - power (BigInt): the exponent of the value to be calculated
+
+ReturnType: BigDecimal
 ```
 If `power` is `ZERO_BI`, `ONE_BD` is returned. `value` is multipled by itself in a simple for loop executed `abs(power)` number of times. If the `power` is negative, uses `safeDiv` to divide `ONE_BD` with the result of the previous calculation. Returns the result in BigDecimal.
 
@@ -65,6 +71,8 @@ If `power` is `ZERO_BI`, `ONE_BD` is returned. `value` is multipled by itself in
 Params:
  - tokenAmount (BigDecimal): The amount of tokens to be divided (numerator)
  - exchangeDecimals (BigInt): The power of 10 to divide the amount with
+
+ReturnType: BigDecimal
 ```
 If exchangeDecimals is `ZERO_BI`, returns tokenAmount after converting to BigDecimal. Else divides the BigDecimal tokenAmount using 10 raised to `exchangeDecimals` as the denominator.
 
@@ -80,6 +88,8 @@ If exchangeDecimals is `ZERO_BI`, returns tokenAmount after converting to BigDec
 Params:
  - amount (BigDecimal): The amount to be divided (numerator)
  - exchangeDecimals (BigInt): The power of 10 to divide the amount with
+
+ReturnType: BigDecimal
 ```
 If `exchangeDecimals` is equal to `ZERO_BI` returns the amount as it is. Otherwise uses `safeDiv` to divide `amount` with `10^exchangeDecimals` in BigDecimals type.
 
@@ -95,6 +105,8 @@ If `exchangeDecimals` is equal to `ZERO_BI` returns the amount as it is. Otherwi
 ```
 Params:
  - value (BigDecimal): Value to check whether zero
+
+ReturnType: boolean
 ```
 Converts value to string and then to float. Compares it against ZERO_BD after converting to String and then parsing as float. Returns boolean value from comparing the equality of the two float values.
 
@@ -108,6 +120,8 @@ Converts value to string and then to float. Compares it against ZERO_BD after co
 ```
 Params:
  - value (String) - Hex String to check for Null Eth value
+
+ReturnType: boolean
 ```
 Returns boolean value. True is value == '0x0000000000000000000000000000000000000000000000000000000000000001', else false.
 
@@ -116,7 +130,10 @@ Returns boolean value. True is value == '0x0000000000000000000000000000000000000
 2. [fetchTokenName()](./token.ts#fetchtokenname)
 
 ### bigDecimalExp18()
-Returns 10^18 in BigDecimal type.
+```
+ReturnType: BigDecimal
+Value: 10^18
+```
 
 #### Invoked at:
 1.
@@ -126,6 +143,8 @@ Returns 10^18 in BigDecimal type.
 Params:
  - tokenAmount (BigInt) - The amount of token value to be converted
  - exchangeDecimals (BigInt) - The positive power of the exponent to divide the tokenAmount with
+
+ReturnType: BigDecimal
 ```
 If exchangeDecimals is `ZERO_BI`, returns tokenAmount after converting to BigDecimal. Else divides the BigDecimal tokenAmount using 10 raised to `exchangeDecimals` as the denominator.
 
@@ -145,6 +164,8 @@ If exchangeDecimals is `ZERO_BI`, returns tokenAmount after converting to BigDec
 ```
 Params:
  - eth (BigInt) - Int value representing ether amount in wei
+
+ReturnType: BigDecimal
 ```
 Converts the value of ether in wei from integer to big decimal representing amount in ether. It converts the eth parameter to BigDecimal and then divides it with 10^18 BigDecimal value.
 
@@ -158,6 +179,8 @@ Converts the value of ether in wei from integer to big decimal representing amou
 ```
 Params:
  - event (ethereum.Event) - An ethereum event for emitted from the transaction entity to be returned.
+
+ReturnType: Transaction
 ```
 Returns a [Transaction](../../schemas/transaction.md) instance for the specified event. If a transaction instance doesn't already exit for the event, it's created and then returned. Uses `event.transaction.hash.toHexString()` to find the relevant transaction or to create a new transaction instance.
 Uses `event` parameters `block.blockNumber`, `block.timestamp`, `transaction.gasUsed` and `transaction.gasPrice` to populate `transaction`'s fields.

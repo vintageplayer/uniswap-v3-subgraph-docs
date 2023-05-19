@@ -106,6 +106,7 @@ Represents the null address in ethereum.
 
 ### factoryContract
 An object representing a smart contract based on `abis/factory.json` abi, binded to `FACTORY_ADDRESS` to query the smart contract data.
+
 #### Dependencies:
 1. [FACTORY_ADDRESS](#factory_address)
 

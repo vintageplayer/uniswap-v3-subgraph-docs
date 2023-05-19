@@ -21,7 +21,7 @@ It has a constructor to initialized an object:
 constructor(address: Address, symbol: string, name: string, decimals: BigInt)
 ```
 
-It also exposes to static functions:
+The class exposes two static functions:
 1. [getStaticDefinitions()](#getstaticdefinitions)
 2. [fromAddress()](#fromaddress)
 
@@ -37,21 +37,22 @@ Returns an `Array<StaticTokenDefinition>` object with the token definitions defi
 |0xbb9bc244d798123fde783fcc1c72d3bb8c189413|TheDAO|TheDAO|16|
 |0x38c6a68304cdefb9bec48bbfaaba5c5b47818bb2|HPB|HPBCoin|18|
 
-Invoked at:
+#### Invoked at:
 1. [fromAddress()](#fromaddress)
 
 ### fromAddress()
 ```
 Params:
  - tokenAddress (Address): the ERC20 address to search for in the ERC20 symbols defined in StaticTokenDefinition class
+
+ReturnType: StaticTokenDefinition | null
 ```
 Get an Array of `StaticTokenDefinition` objects from static method getStaticDefinition() and iterates through them to find the `tokenAddress`, If found returns the `StaticTokenDefinition` object, else returns `null`.
 
-Dependencies:
+#### Dependencies:
 1. [getStaticDefinitions()](#getstaticdefinitions)
 
-Invoked at:
+#### Invoked at:
 1. [fetchTokenSymbol()](./token.ts#fetchtokensymbol)
 2. [fetchTokenName()](./token.ts#fetchtokenname)
 3. [fetchTokenDecimals()](./token.ts#fetchtokendecimals)
-
