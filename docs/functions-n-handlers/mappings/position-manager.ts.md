@@ -6,95 +6,192 @@ title: position-manager.ts
 path: [`/src/mappings/position-manager.ts`]((https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/position-manager.ts)
 )
 
-
 ### getPosition()
-
 ```
 Params:
- - 
+ - event (ethereum.Event): An event from the NFT Position Manager contract
+ - tokenId (BigInt): NFT Id for the staked position
+
+ReturnType: Position | null
 ```
+- Returns a `Position` entity for the given `tokenId` if found.
+- If not found, retrieves a position by directly querying the `NonfungiblePositionManager` contract using the ABI. Invokes `factoryContract.getPool()` and passing it the `position`'s parameters `token0`, `token1` and `fee` to find the `pool` contract address.
+- Then creates a new position entity for the tokenId and set the metadata properties using `position` read earlier from the `NonfungiblePositionManager` contract. Sets the metrics to `ZERO_BD`. 
 
-Dependencies:
-1. []
+:::info No Position for same Block Mint and burn
+In certain scenarios, the position is minted and burnt within the same block. The contract call to NonfungiblePositionManager to retrieve position data reverts in such scenarios as the position no longer exists.
+:::
 
-Invoked at:
-1. []
+#### Entities
+1. [Position](../../schemas/position.md) - Read/Create Without Saving
+
+#### ABI Dependencies:
+1. NonfungiblePositionManager.json
+
+#### Dependencies:
+1. [factoryContract](../utils/constants.ts#factorycontract)
+2. [ZERO_BI](../utils/constants.ts#zero_bi)
+3. [ZERO_BD](../utils/constants.ts#zero_bd)
+4. [ADDRESS_ZERO](../utils/constants.ts#address_zero)
+5. [loadTransaction()](../utils/index.ts#loadtransaction)
+
+#### Invoked at:
+1. [handleIncreaseLiquidity()](#handleincreaseliquidity)
+2. [handleDecreaseLiquidity()](#handledecreaaseliquidity)
+3. [handleCollect()](#handlecollect)
+4. [handleTransfer()](#handletransfer)
 
 ### updateFeeVars()
-
 ```
 Params:
- - 
+ - position (Position): The position for which the fee variables are set
+ - event (ethereum.Event): An event from the NFT Position Manager contract
+ - tokenId (BigInt): NFT Id for the staked position
+
+ReturnType: Position
 ```
+- Updates the fields `position.feeGrowthInside0LastX128` and `position.feeGrowthInside1LastX128` for the position represented by `tokenId` by reading the value from the `NonfungiblePositionManager` triggering the `event`.
 
-Dependencies:
-1. []
+#### Entities
+1. [Position](../../schemas/position.md) - Update Fields Without Saving
 
-Invoked at:
-1. []
+#### ABI Dependencies:
+1. NonfungiblePositionManager.json
+
+#### Invoked at:
+1. [handleIncreaseLiquidity()](#handleincreaseliquidity)
+2. [handleDecreaseLiquidity()](#handledecreaaseliquidity)
+3. [handleCollect()](#handlecollect)
 
 ### savePositionSnapshot()
-
 ```
 Params:
- - 
+ - position (Position): Position entity for which the current state is saved as a snapshot
+ - event (ethereum.Event): NonfungiblePositionManager Contract event after which the snapshot is being saved
+
+ReturnType: void
 ```
+- Saves the current values of a `Position` entity for future reference, including liquidity, tokens deposited and withdrawn, fee collected, feeGrowthInside.
 
-Dependencies:
-1. []
+#### Entities
+1. [PositionSnapshot()](../../schemas/positionsnapshot.md) - Create
 
-Invoked at:
-1. []
+#### Dependencies:
+1. [loadTransaction()](../utils/index.ts#loadtransaction)
+
+#### Invoked at:
+1. [handleIncreaseLiquidity()](#handleincreaseliquidity)
+2. [handleDecreaseLiquidity()](#handledecreaaseliquidity)
+3. [handleCollect()](#handlecollect)
+4. [handleTransfer()](#handletransfer)
 
 ### handleIncreaseLiquidity()
-
 ```
 Params:
- - 
+ - event (IncreaseLiquidity): Entity for a IncreaseLiquidity event emitted by NonfungiblePositionManager Contract
+
+ReturnType: void
 ```
+:::info Ignored Blocks and Addresses
+ - Block 14317993 is ignored by the function.
+ - Pool address 0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248 (MULAN-USDT) is ignored by the function.
+:::
 
-Dependencies:
-1. []
+- Fetches the position entity using `getPosition()`, passing `event.params.tokenId` and `event` as parameters.
+- Updates fields `position.liquidity`, `position.depositedToken0` and `position.depositedToken1`.
+- Triggers `updateFeeVars()` and `savePositionSnapshot()`
 
-Invoked at:
-1. []
+#### Entities
+1. [Position](../../schemas/position.md) - Write
+2. [Token](../../schemas/token.md) - Read
+
+#### Dependencies:
+1. [getPosition()](#getposition)
+2. [convertTokenToDecimal()](../utils/index.ts#converttokentodecimal)
+3. [updateFeeVars()](#updatefeevars)
+4. [savePositionSnapshot()](#savepositionsnapshot)
+
+#### Invoked at:
+1. [IncreaseLiquidity Event (Handler)](../../events/increaseliquidity.md)
 
 ### handleDecreaseLiquidity()
-
 ```
 Params:
- - 
+ - event (DecreaseLiquidity): Entity for a DecreaseLiquidity event emitted by NonfungiblePositionManager Contract
+
+ReturnType: void
 ```
+:::info Ignored Blocks and Addresses
+ - Block 14317993 is ignored by the function.
+ - Pool address 0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248 (MULAN-USDT) is ignored by the function.
+:::
 
-Dependencies:
-1. []
+- Fetches the position entity using `getPosition()`, passing `event.params.tokenId` and `event` as parameters.
+- Updates fields `position.liquidity`, `position.withdrawnToken0` and `position.withdrawnToken1`.
+- Triggers `updateFeeVars()` and `savePositionSnapshot()`
 
-Invoked at:
-1. []
+#### Entities
+1. [Position](../../schemas/position.md) - Write
+2. [Token](../../schemas/token.md) - Read
+
+#### Dependencies:
+1. [getPosition()](#getposition)
+2. [convertTokenToDecimal()](../utils/index.ts#converttokentodecimal)
+3. [updateFeeVars()](#updatefeevars)
+4. [savePositionSnapshot()](#savepositionsnapshot)
+
+#### Invoked at:
+1. [DecreaseLiquidity Event (Handler)](../../events/decreaseliquidity.md)
 
 ### handleCollect()
-
 ```
 Params:
- - 
+ - event (Collect): Entity for a Collect event emitted by NonfungiblePositionManager Contract
+
+ReturnType: void
 ```
+:::info Ignored Addresses
+ - Pool address 0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248 (MULAN-USDT) is ignored by the function.
+:::
 
-Dependencies:
-1. []
+- Fetches the position entity using `getPosition()`, passing `event.params.tokenId` and `event` as parameters.
+- Updates fields `position.collectedFeesToken0` and `position.collectedFeesToken1` by adding the `event.params.amount0` after adjusting it with `token.decimals`.
+- Triggers `updateFeeVars()` and `savePositionSnapshot()`
 
-Invoked at:
-1. []
+:::danger a
+`event.params.amount0` (adjusted with `token0.decimals`) is added to both `position.collectedFeesToken0` and `position.collectedFeesToken1`. This logic needs to be validated.
+:::
+
+#### Entities
+1. [Position](../../schemas/position.md) - Write
+2. [Token](../../schemas/token.md) - Read
+
+#### Dependencies:
+1. [getPosition()](#getposition)
+2. [convertTokenToDecimal()](../utils/index.ts#converttokentodecimal)
+3. [updateFeeVars()](#updatefeevars)
+4. [savePositionSnapshot()](#savepositionsnapshot)
+
+#### Invoked at:
+1. [Collect Event (Handler)](../../events/collect.md)
 
 ### handleTransfer()
-
 ```
 Params:
- - 
+ - event (Transfer): Entity for a Transfer event emitted by NonfungiblePositionManager Contract
+
+ReturnType: void
 ```
+- Fetches the position entity using `getPosition()`, passing `event.params.tokenId` and `event` as parameters.
+- Sets `position.owner` with `event.params.to`.
+- Triggers `savePositionSnapshot()`.
 
-Dependencies:
-1. []
+#### Entities
+1. [Position](../../schemas/position.md) - Write
 
-Invoked at:
-1. []
+#### Dependencies:
+1. [getPosition()](#getposition)
+2. [savePositionSnapshot()](#savepositionsnapshot)
 
+#### Invoked at:
+1. [Transfer Event (Handler)](../../events/transfer.md)
