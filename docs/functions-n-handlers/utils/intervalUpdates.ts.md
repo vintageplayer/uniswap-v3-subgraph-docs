@@ -18,8 +18,8 @@ Updates the `tvlUSD` and `txCount` parameters for `UniswapDayData` entity for a 
 Uses `event.block.timestamp.toI32() / 86400` to determine the `dayID` for `UniswapDayData`. If a `UniswapDayData` entity for the given day doesn't exist already, it is first created, with rest of the metrics initialized to `ZERO_BD`.
 
 #### Entities:
-1. [Factory](../../schemas/factory.md) - Read
-2. [UniswapDayData](../../schemas/uniswapDayData.md) - Read/Create & Write
+1. [Factory](../../schemas/factory) - Read
+2. [UniswapDayData](../../schemas/uniswapDayData) - Read/Create & Write
 
 #### Dependencies:
 1. [ZERO_BD](./constants.ts#zero_bd)
@@ -48,8 +48,8 @@ Updates the rest of the metrics using values from `Pool` entity.
 Note: Currently updates `poolDayData.close` only when a new entity is created.
 
 #### Entities:
-1. [Pool](../../schemas/pool.md) - Read
-2. [PoolDayData](../../poolDayData.md) - Read/Create & Write
+1. [Pool](../../schemas/pool) - Read
+2. [PoolDayData](../../schemas/poolDayData) - Read/Create & Write
 
 #### Dependencies:
 1. [ZERO_BD](./constants.ts#zero_bd)
@@ -78,8 +78,8 @@ Updates the `PoolHourData` values `high` or `low` conditionally by comparing `po
 Updates the rest of the metrics using values from `Pool` entity.
 
 #### Entities:
-1. [Pool](../../schemas/pool.md) - Read
-2. [PoolHourData](../../poolHourData.md) - Read/Create & Write
+1. [Pool](../../schemas/pool) - Read
+2. [PoolHourData](../../schemas/poolHourData) - Read/Create & Write
 
 #### Dependencies:
 1. [ZERO_BD](./constants.ts#zero_bd)
@@ -110,8 +110,8 @@ Updates the `TokenDayData` values `high` or `low` conditionally by comparing `po
 Upadates the rest of the metrics using valus from `Token` entity.
 
 #### Entities:
-1. [Bundle](../../schemas/bundle.md) - Read
-2. [TokenDayData](../../schemas/tokenDayData.md) - Read/Create & Write
+1. [Bundle](../../schemas/bundle) - Read
+2. [TokenDayData](../../schemas/tokenDayData) - Read/Create & Write
 
 #### Dependencies:
 1. [ZERO_BD](./constants.ts#zero_bd)
@@ -140,8 +140,8 @@ Updates the `TokenHourData` values `high` or `low` conditionally by comparing `t
 Updates the rest of the metrics using values from `token` entity.
 
 #### Entities:
-1. [Bundle](../../schemas/bundle.md) - Read
-2. [TokenHourData](../../schemas/tokenHourData.md) - Read/Create & Write
+1. [Bundle](../../schemas/bundle) - Read
+2. [TokenHourData](../../schemas/tokenHourData) - Read/Create & Write
 
 #### Dependencies:
 1. [ZERO_BD](./constants.ts#zero_bd)
@@ -166,7 +166,7 @@ Creates a new `TickDayData` entity for the specific day if not found. Initialize
 Sets the `TickDayData` entity's field values using corresponding fields from `tick`.
 
 #### Entities:
-1. [TickDayData](../../schemas/tickDayData.md) - Read/Create & Write
+1. [TickDayData](../../schemas/tickDayData) - Read/Create & Write
 
 #### Invoked at:
 1. [updateTickFeeVarsAndSave()](../mappings/core.ts#updatetickfeevarsandsave)

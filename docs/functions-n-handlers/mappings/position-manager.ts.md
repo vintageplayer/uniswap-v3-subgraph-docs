@@ -22,7 +22,7 @@ In certain scenarios, the position is minted and burnt within the same block. Th
 :::
 
 #### Entities
-1. [Position](../../schemas/position.md) - Read/Create Without Saving
+1. [Position](../../schemas/position) - Read/Create Without Saving
 
 #### ABI Dependencies:
 1. NonfungiblePositionManager.json
@@ -52,7 +52,7 @@ ReturnType: Position
 - Updates the fields `position.feeGrowthInside0LastX128` and `position.feeGrowthInside1LastX128` for the position represented by `tokenId` by reading the value from the `NonfungiblePositionManager` triggering the `event`.
 
 #### Entities
-1. [Position](../../schemas/position.md) - Update Fields Without Saving
+1. [Position](../../schemas/position) - Update Fields Without Saving
 
 #### ABI Dependencies:
 1. NonfungiblePositionManager.json
@@ -73,7 +73,7 @@ ReturnType: void
 - Saves the current values of a `Position` entity for future reference, including liquidity, tokens deposited and withdrawn, fee collected, feeGrowthInside.
 
 #### Entities
-1. [PositionSnapshot()](../../schemas/positionsnapshot.md) - Create
+1. [PositionSnapshot()](../../schemas/positionsnapshot) - Create
 
 #### Dependencies:
 1. [loadTransaction()](../utils/index.ts#loadtransaction)
@@ -101,8 +101,8 @@ ReturnType: void
 - Triggers `updateFeeVars()` and `savePositionSnapshot()`
 
 #### Entities
-1. [Position](../../schemas/position.md) - Write
-2. [Token](../../schemas/token.md) - Read
+1. [Position](../../schemas/position) - Write
+2. [Token](../../schemas/token) - Read
 
 #### Dependencies:
 1. [getPosition()](#getposition)
@@ -111,7 +111,7 @@ ReturnType: void
 4. [savePositionSnapshot()](#savepositionsnapshot)
 
 #### Invoked at:
-1. [IncreaseLiquidity Event (Handler)](../../events/increaseliquidity.md)
+1. [IncreaseLiquidity Event (Handler)](../../events)
 
 ### handleDecreaseLiquidity()
 ```
@@ -130,8 +130,8 @@ ReturnType: void
 - Triggers `updateFeeVars()` and `savePositionSnapshot()`
 
 #### Entities
-1. [Position](../../schemas/position.md) - Write
-2. [Token](../../schemas/token.md) - Read
+1. [Position](../../schemas/position) - Write
+2. [Token](../../schemas/token) - Read
 
 #### Dependencies:
 1. [getPosition()](#getposition)
@@ -140,7 +140,7 @@ ReturnType: void
 4. [savePositionSnapshot()](#savepositionsnapshot)
 
 #### Invoked at:
-1. [DecreaseLiquidity Event (Handler)](../../events/decreaseliquidity.md)
+1. [DecreaseLiquidity Event (Handler)](../../events)
 
 ### handleCollect()
 ```
@@ -162,8 +162,8 @@ ReturnType: void
 :::
 
 #### Entities
-1. [Position](../../schemas/position.md) - Write
-2. [Token](../../schemas/token.md) - Read
+1. [Position](../../schemas/position) - Write
+2. [Token](../../schemas/token) - Read
 
 #### Dependencies:
 1. [getPosition()](#getposition)
@@ -172,7 +172,7 @@ ReturnType: void
 4. [savePositionSnapshot()](#savepositionsnapshot)
 
 #### Invoked at:
-1. [Collect Event (Handler)](../../events/collect.md)
+1. [Collect Event (Handler)](../../events)
 
 ### handleTransfer()
 ```
@@ -186,11 +186,11 @@ ReturnType: void
 - Triggers `savePositionSnapshot()`.
 
 #### Entities
-1. [Position](../../schemas/position.md) - Write
+1. [Position](../../schemas/position) - Write
 
 #### Dependencies:
 1. [getPosition()](#getposition)
 2. [savePositionSnapshot()](#savepositionsnapshot)
 
 #### Invoked at:
-1. [Transfer Event (Handler)](../../events/transfer.md)
+1. [Transfer Event (Handler)](../../events)

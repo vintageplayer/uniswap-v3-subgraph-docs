@@ -18,9 +18,9 @@ ReturnType: void
 - Updates the token's prices relative to Eth using `findEthPerToken()`.
 
 #### Entities
-1. [Pool](../../schemas/pool.md) - Read & Write
-2. [Token](../../schemas/token.md) - Write
-3. [Bundle](../../schemas/bundle.md) - Write
+1. [Pool](../../schemas/pool) - Read & Write
+2. [Token](../../schemas/token) - Write
+3. [Bundle](../../schemas/bundle) - Write
 
 #### Dependencies:
 1. [updatePoolDayData()](../utils/intervalUpdates.ts#updatepooldaydata)
@@ -29,7 +29,7 @@ ReturnType: void
 4. [findEthPerToken()](../utils/pricing.ts#findethpertoken)
 
 #### Invoked at:
-1. [Initialize Event (Handler)](../../events/initialized.md)
+1. [Initialize Event (Handler)](../../events)
 
 ### handleMint()
 ```
@@ -46,12 +46,12 @@ ReturnType: void
 - Updates the fees accumulated outside the lower/upper ticks using `updateTickFeeVarsAndSave()`
 
 #### Entities
-1. [Bundle](../../schemas/bundle.md) - Read
-2. [Pool](../../schemas/pool.md) - Read & Write
-3. [Token](../../schemas/token.md) - Read & Write
-4. [Factory](../../schemas/factory.md) - Read & Write
-5. [Tick](../../schemas/tick.md) - Read/Create & Write
-6. [Mint](../../schemas/mint.md) - Create & Write
+1. [Bundle](../../schemas/bundle) - Read
+2. [Pool](../../schemas/pool) - Read & Write
+3. [Token](../../schemas/token) - Read & Write
+4. [Factory](../../schemas/factory) - Read & Write
+5. [Tick](../../schemas/tick) - Read/Create & Write
+6. [Mint](../../schemas/mint) - Create & Write
 
 #### Dependencies:
 1. [FACTORY_ADDRESS](../utils/constants.ts#factory_address)
@@ -67,7 +67,7 @@ ReturnType: void
 11. [ONE_BI](../utils/constants.ts#one_bi)
 
 #### Invoked at:
-1. [Mint Event (Handler)](../../events/mint.md)
+1. [Mint Event (Handler)](../../events)
 
 ### handleBurn()
 ```
@@ -84,12 +84,12 @@ ReturnType: void
 - Updates the fees accumulated outside the lower/upper ticks using `updateTickFeeVarsAndSave()`
 
 #### Entities
-1. [Bundle](../../schemas/bundle.md) - Read
-2. [Pool](../../schemas/pool.md) - Read & Write
-3. [Token](../../schemas/token.md) - Read & Write
-4. [Factory](../../schemas/factory.md) - Read & Write
-5. [Tick](../../schemas/tick.md) - Read & Write
-6. [Burn](../../schemas/burn.md) - Create & Write
+1. [Bundle](../../schemas/bundle) - Read
+2. [Pool](../../schemas/pool) - Read & Write
+3. [Token](../../schemas/token) - Read & Write
+4. [Factory](../../schemas/factory) - Read & Write
+5. [Tick](../../schemas/tick) - Read & Write
+6. [Burn](../../schemas/burn) - Create & Write
 
 #### Dependencies:
 1. [FACTORY_ADDRESS](../utils/constants.ts#factory_address)
@@ -104,7 +104,7 @@ ReturnType: void
 10. [updateTickFeeVarsAndSave()](#updatetickfeevarsandsave)
 
 #### Invoked at:
-1. [Burn Event (Handler)](../../events/burn.md)
+1. [Burn Event (Handler)](../../events)
 
 ### handleSwap()
 ```
@@ -132,17 +132,17 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 - Iterates over all the ticks crossed with the swap (oldTick to newTick) and updates their fee fields using `loadTickUpdateFeeVarsAndSave()`. If the number of ticks cross is more than 100, the updates are ignored to prevent timeouts.
 
 #### Entities
-1. [Bundle](../../schemas/bundle.md) - Read & Write
-2. [Pool](../../schemas/pool.md) - Read & Write
-3. [Token](../../schemas/token.md) - Read & Write
-4. [Factory](../../schemas/factory.md) - Read & Write
-5. [Tick](../../schemas/tick.md) - Read/Create & Write
-6. [Swap](../../schemas/swap.md) - Create & Write
-7. [UniswapDayData](../../schemas/uniswapdaydata.md) - Write
-8. [PoolDayData](../../schemas/pooldaydata.md) - Write
-9. [PoolHourData](../../schemas/poolhourdata.md) - Write
-10. [TokenDayData](../../schemas/tokendaydata.md) - Write
-11. [TokenHourData](../../schemas/tokenhourdata.md) - Write
+1. [Bundle](../../schemas/bundle) - Read & Write
+2. [Pool](../../schemas/pool) - Read & Write
+3. [Token](../../schemas/token) - Read & Write
+4. [Factory](../../schemas/factory) - Read & Write
+5. [Tick](../../schemas/tick) - Read/Create & Write
+6. [Swap](../../schemas/swap) - Create & Write
+7. [UniswapDayData](../../schemas/uniswapdaydata) - Write
+8. [PoolDayData](../../schemas/pooldaydata) - Write
+9. [PoolHourData](../../schemas/poolhourdata) - Write
+10. [TokenDayData](../../schemas/tokendaydata) - Write
+11. [TokenHourData](../../schemas/tokenhourdata) - Write
 
 #### ABI Dependencies:
 1. pool.json
@@ -168,7 +168,7 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 18. [ONE_BI](../utils/constants.ts#one_bi)
 
 #### Invoked at:
-1. [Swap Event (Handler)](../../events/swap.md)
+1. [Swap Event (Handler)](../../events)
 
 ### handleFlash()
 ```
@@ -180,13 +180,13 @@ ReturnType: void
 - Sets `pool.feeGrowthGlobal0X128` and `pool.feeGrowthGlobal1X128` by reading the them from pool contract's blockchain state using the ABI.
 
 #### Entities
-1. [Pool](../../schemas/pool.md) - Read & Write
+1. [Pool](../../schemas/pool) - Read & Write
 
 #### ABI Dependencies:
 1. pool.json
 
 #### Invoked at:
-1. [Flash Event (Handler)](../../events/flash.md)
+1. [Flash Event (Handler)](../../events)
 
 ### updateTickFeeVarsAndSave()
 ```
@@ -200,7 +200,7 @@ ReturnType: void
 - Triggers update to tick day metrics by invoking `updateTickDayData()`.
 
 #### Entities
-1. [Tick](../../schemas/tick.md) - Write
+1. [Tick](../../schemas/tick) - Write
 
 #### ABI Dependencies:
 1. pool.json
@@ -224,7 +224,7 @@ ReturnType: void
 - Loads the tick using `event.address` and `tickId`. If found, updates the tick variables by invoking `updateTickFeeVarsAndSave()`.
 
 #### Entities
-1. [Tick](../../schemas/tick.md) - Read & Write
+1. [Tick](../../schemas/tick) - Read & Write
 
 #### Dependencies:
 1. [updateTickFeeVarsAndSave()](#updatetickfeevarsandsave)

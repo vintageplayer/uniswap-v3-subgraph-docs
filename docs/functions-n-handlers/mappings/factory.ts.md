@@ -28,13 +28,13 @@ While creating either of the tokens, if the decimals value is not available, the
 :::
 
 #### Entities:
-1. [Factory](../../schemas/factory.md) - Read/Create & Write Entity
-2. [Bundle](../../schemas/bundle.md) - Create Entity
-3. [Pool](../../schemas/pool.md) - Create Entity
-4. [Token](../../schemas/token.md) - Read/Create & Write
+1. [Factory](../../schemas/factory) - Read/Create & Write Entity
+2. [Bundle](../../schemas/bundle) - Create Entity
+3. [Pool](../../schemas/pool) - Create Entity
+4. [Token](../../schemas/token) - Read/Create & Write
 
 #### Contracts
-5. [Pool (Template)](../../contracts/pool.md) - Create
+5. [Pool (Template)](../../contracts/pool) - Create
 
 #### Dependencies:
 1. [FACTORY_ADDRESS](../utils/constants.ts#factory_address)
@@ -49,4 +49,4 @@ While creating either of the tokens, if the decimals value is not available, the
 10. [WHITELIST_TOKENS](../utils/pricing.ts#whitelist_tokens)
 
 #### Invoked at:
-1. [PoolCreated Event (Handler)](../../events/poolcreated.md)
+1. [PoolCreated Event (Handler)](../../events)
