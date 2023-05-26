@@ -43,7 +43,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/vintageplayer/v3-subgraph-docs/tree/main/docs/',
+            'https://github.com/vintageplayer/uniswap-v3-subgraph-docs',
         },
         blog: false,
         theme: {
@@ -66,7 +66,7 @@ const config = {
         },
         items: [          
           {
-            href: 'https://github.com/vintageplayer/v3-subgraph-docs',
+            href: 'https://github.com/vintageplayer/uniswap-v3-subgraph-docs',
             label: 'GitHub',
             position: 'right',
           },
