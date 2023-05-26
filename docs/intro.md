@@ -1,49 +1,39 @@
 ---
 sidebar_position: 1
 slug: /
-title: Overview
+title: Introduction
 ---
 
-# Tutorial Intro
+# Uniswap V3 SubGraph Docs 
+Welcome to exploring the data of [**Uniswap**](https://uniswap.org/), the leading EVM DEX. The docs help you understand data structure in the **SubGraphs** deployed for the dex on the [graph protocol](https://thegraph.com/).
 
-Let's discover **Docusaurus in less than 5 minutes**.
+If you're completely new to the working of the V3 protocol, would recommend going through the [references](#references) below.
 
-## Getting Started
+## Uniswap Foundation
+The docs was possible as I recieved a grant from [Uniswap Foundation](https://uniswapfoundation.mirror.xyz/). The foundation publishes [grant wishlist for RFPs](https://uniswap.notion.site/Uniswap-Foundation-Grants-Wish-List-3be614ba4e504b5caeee7b0159e64a42) regularly if you wish to get involved.
 
-Get started by **creating a new site**.
+## External Links
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### Repo Links:
+ - [V3 Subgraph Repo](https://github.com/Uniswap/v3-subgraph/tree/main)
+ - [V3 Core Contracts Repo](https://github.com/Uniswap/v3-core) - Mainly for factory and pool contracts
+ - [V3 Periphery Contract Repo](https://github.com/Uniswap/v3-periphery) - Mainly for NonFungiblePositionManager Contract
 
-### What you'll need
+### Subgraphs
+ - [Mainnet Subgraph](https://thegraph.com/hosted-service/subgraph/uniswap/uniswap-v3)
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+### References
+ - [Uniswap V3 Core Whitepaper](https://uniswap.org/whitepaper-v3.pdf)
+ - [Liquidity Math in Uniswap V3](https://atiselsts.github.io/pdfs/uniswap-v3-liquidity-math.pdf)
+ - [Uniswap V3 Development Book](https://uniswapv3book.com/)
+ 
+### Misc
+ - [Uniswap Hacker Getting Started Guide](https://uniswap.notion.site/uniswap/Uniswap-Hacker-Getting-Started-Guide-781b008a16c849c8bf4d9920744e77f5)
+ - [Uniswap Docs](https://docs.uniswap.org/) ([Code Repo](https://github.com/Uniswap/docs/tree/main))
+ - [Uniswap Info Site](https://info.uniswap.org/#/) to see the pool and token stats using the subgraph
+ - [V3 New Chain Deployment Guide](https://github.com/Uniswap/v3-new-chain-deployments) (Slightly Outdated)
 
-## Generate a new site
+### Get In Touch
+For any updates or additions, you can raise a PR to the [docs repo](https://github.com/vintageplayer/uniswap-v3-subgraph-docs).
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Feel free to reach out on [Twitter](https://twitter.com/artsofbaniya) to discuss about web3 or any field, or just to keep up with what I'm building.
