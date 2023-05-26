@@ -37,4 +37,3 @@ Entity to store details of a position created through [NonfungiblePositionManage
 |[handleDecreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handledecreaseliquidity)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleCollect()](../functions-n-handlers/mappings/position-manager.ts#handlecollect)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleTransfer()](../functions-n-handlers/mappings/position-manager.ts#handletransfer)|||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
-|[()](../functions-n-handlers/mappings/)|||||
