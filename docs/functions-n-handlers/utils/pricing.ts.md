@@ -122,7 +122,8 @@ Params: none
 
 ReturnType: BigDecimal
 ```
-Returns the `token0Price` for the `pool` represented by `USDC_WETH_03_POOL`. When `pool` entity is not found, returns `ZERO_BD`.
+Returns the Price of ETH in terms of USD, based on the stable coin pools.
+Currently, the `token0Price` for the `pool` represented by `USDC_WETH_03_POOL`. When `pool` entity is not found, returns `ZERO_BD`.
 
 #### Entites:
 1. [Pool](../../schemas/pool.md) - Read Entity
@@ -144,7 +145,7 @@ ReturnType: BigDecimal
 ```
 If token is weth, returns 1. If token in `STABLE_COINS`, returns `1/bundle.ethPriceUSD`.
 
-Else, iterates over all the whitelisted pools for the token using `token.whitelistPools`. Finds the pool with largest liquidity value in terms of ETH, as long as the value is atleast `MINIMUM_ETH_LOCKED`. Uses the eth value of the paired token and relateive token price between the token pair to find the `token`'s' value in terms of eth.
+Else, iterates over all the whitelisted pools for the token using `token.whitelistPools`. Finds the pool with largest liquidity value in terms of ETH, as long as the value is atleast `MINIMUM_ETH_LOCKED`. Uses the eth value of the paired token and relative token price between the token pair to find the `token`'s' value in terms of eth.
 If there's no whitelisted pool with `MINIMUM_ETH_LOCKED`, returns `ZERO_BD`.
 
 #### Entites:
@@ -173,7 +174,7 @@ Params:
 
 ReturnType: BigDecimal
 ```
-Returns the USD value equivalent to `tokenAmoun0` and `tokenAmount1` together. Calculated the USD price using `token.derviedEth*bundle.ethPriceUSD` as the multiplier if the token is present in `WHITELIST_TOKENS`. If only the tokens are present, it adds their individual USD prices. If only one is present, it uses 2X the value of that token. If neither are in the `WHITELIST_TOKENS` list, returns `ZERO_BD`.
+Returns the USD value equivalent to `tokenAmoun0` and `tokenAmount1` together. Calculates the USD price using `token.derviedEth*bundle.ethPriceUSD` as the multiplier if the token is present in `WHITELIST_TOKENS`. If both the tokens are present, it adds their individual USD prices. If only one is present, it uses 2X the value of that token. If neither are in the `WHITELIST_TOKENS` list, returns `ZERO_BD`.
 #### Entites:
 1. [Bundle](../../schemas/bundle.md) - Read Entity
 

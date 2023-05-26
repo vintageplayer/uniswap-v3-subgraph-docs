@@ -51,7 +51,7 @@ ReturnType: void
 3. [Token](../../schemas/token.md) - Read & Write
 4. [Factory](../../schemas/factory.md) - Read & Write
 5. [Tick](../../schemas/tick.md) - Read/Create & Write
-6. [Mint (Template)](../../templates/pool.md#mint) - Create & Write
+6. [Mint](../../schemas/mint.md) - Create & Write
 
 #### Dependencies:
 1. [FACTORY_ADDRESS](../utils/constants.ts#factory_address)
@@ -89,7 +89,7 @@ ReturnType: void
 3. [Token](../../schemas/token.md) - Read & Write
 4. [Factory](../../schemas/factory.md) - Read & Write
 5. [Tick](../../schemas/tick.md) - Read & Write
-6. [Burn (Template)](../../templates/pool.md#burn) - Create & Write
+6. [Burn](../../schemas/burn.md) - Create & Write
 
 #### Dependencies:
 1. [FACTORY_ADDRESS](../utils/constants.ts#factory_address)
@@ -137,7 +137,7 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 3. [Token](../../schemas/token.md) - Read & Write
 4. [Factory](../../schemas/factory.md) - Read & Write
 5. [Tick](../../schemas/tick.md) - Read/Create & Write
-6. [Swap (Template)](../../templates/pool.md#swap) - Create & Write
+6. [Swap](../../schemas/swap.md) - Create & Write
 7. [UniswapDayData](../../schemas/uniswapdaydata.md) - Write
 8. [PoolDayData](../../schemas/pooldaydata.md) - Write
 9. [PoolHourData](../../schemas/poolhourdata.md) - Write

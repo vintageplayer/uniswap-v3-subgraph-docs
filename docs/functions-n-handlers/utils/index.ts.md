@@ -178,7 +178,7 @@ Converts the value of ether in wei from integer to big decimal representing amou
 ### loadTransaction()
 ```
 Params:
- - event (ethereum.Event) - An ethereum event for emitted from the transaction entity to be returned.
+ - event (ethereum.Event) - Ethereum event emitted from the transaction to return.
 
 ReturnType: Transaction
 ```

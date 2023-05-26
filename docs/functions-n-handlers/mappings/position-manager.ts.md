@@ -1,10 +1,9 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 title: position-manager.ts
 ---
 
-path: [`/src/mappings/position-manager.ts`]((https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/position-manager.ts)
-)
+path: [`/src/mappings/position-manager.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/position-manager.ts)
 
 ### getPosition()
 ```
