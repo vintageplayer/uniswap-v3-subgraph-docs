@@ -3,10 +3,13 @@ title: TokenHourData
 position: 20
 ---
 
+Entities capturing the hourly metrics for a token across all of Uniswap.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | TokenHourData Entity ID. Format: `<token address>-<Timestamp rounded to the hour by dividing by 3600>` |
-|periodStartUnix | Int! | | Timestamp rounded to the hour by dividing by 86400 |
+|periodStartUnix | Int! | | Timestamp rounded to the hour by dividing by 3600 |
 |token | [Token](./token)! | | [Token Entity](./token) for which the hourly metric were recorded |
 |volume | BigDecimal! | | Hourly swap volume of the token |
 |volumeUSD | BigDecimal! | | Hourly swap volume of the token in derived USD |
@@ -19,3 +22,9 @@ position: 20
 |high | BigDecimal! | | High Price of the token |
 |low | BigDecimal! | | Low Price of the token |
 |close | BigDecimal! | | Close Price of the token |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[updateTokenHourData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetokenhourdata)|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

@@ -3,10 +3,14 @@ title: TickHourData
 sidebar_position: 17
 ---
 
+Entities capturing details of Liquidity available & Volume of token traded at a tick for a given hour.
+
 :::info Not Used
 The Schema is not currently populated in mainnet subgraph
 :::
 
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | TickHourData Entity ID. Format: `<pool.address>-<Tick Index>-<Timestamp rounded to the hour by dividing by 3600>` |

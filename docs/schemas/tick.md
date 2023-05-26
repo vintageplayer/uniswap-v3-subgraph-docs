@@ -3,6 +3,9 @@ title: Tick
 sidebar_position: 5
 ---
 
+Entity to stores the metadata for a tick in a pool, it's lifetime metrics and current liquidity and fee variables.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Tick ID. Format: `<pool address>#<tick address>`|
@@ -26,3 +29,14 @@ sidebar_position: 5
 |liquidityProviderCount | BigInt! | | Used for detecting new exchanges. (Not Used currently) |
 |feeGrowthOutside0X128 | BigInt! | | Used for calculating token0 fee's accumulated outside a tick whenever it is crossed |
 |feeGrowthOutside1X128 | BigInt! | | Used for calculating token1 fee's accumulated outside a tick whenever it is crossed |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[createTick()](../functions-n-handlers/utils/tick.ts#createtick)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>||
+|[updateTickDayData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetickdaydata)||<center>:white_check_mark:</center>|||
+|[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)|||<center>:white_check_mark:</center>||
+|[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)|||<center>:white_check_mark:</center>||
+|[updateTickFeeVarsAndSave()](../functions-n-handlers/mappings/core.ts#updatetickfeevarsandsave)|||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[loadTickUpdateFeeVarsAndSave()](../functions-n-handlers/mappings/core.ts#loadtickupdatefeevarsandsave)||<center>:white_check_mark:</center>|||

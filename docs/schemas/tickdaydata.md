@@ -3,6 +3,13 @@ title: TickDayData
 sidebar_position: 18
 ---
 
+Entities storing the details of Liquidity available & volume of token traded at a tick on a given day.
+
+:::info
+An entity is created only if there is a change during the day
+:::
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | TickDayData Entity ID. Format: `<pool.address>-<Tick Index>-<Timestamp rounded to the day by dividing by 86400>` |
@@ -17,3 +24,9 @@ sidebar_position: 18
 |feesUSD | BigDecimal! | |  Daily swap fee with this tick in active range in derived USD |
 |feeGrowthOutside0X128 | BigInt! | | token0 fee accumulated marker outside the tick range at the end of the day |
 |feeGrowthOutside1X128 | BigInt! | | token1 fee accumulated marker outside the tick range at the end of the day |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[updateTickDayData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetickdaydata)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

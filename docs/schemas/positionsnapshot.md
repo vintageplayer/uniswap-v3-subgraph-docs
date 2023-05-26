@@ -3,6 +3,9 @@ title: PositionSnapshot
 sidebar_position: 7
 ---
 
+Entity storing the state of a position after an action taken on the position.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Position Snapshot ID. Format: `<NFT Token ID>#<Block Number>` |
@@ -21,3 +24,9 @@ sidebar_position: 7
 |transaction | [Transaction](./transaction)! | | [Transaction](./transaction) in which the Snapshot was created. |
 |feeGrowthInside0LastX128 | BigInt! | | Marker to compute the position's token0 fee in a pool |
 |feeGrowthInside1LastX128 | BigInt! | | Marker to compute the position's token1 fee in a pool |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[savePositionSnapshot()](../functions-n-handlers/mappings/position-manager.ts#savepositionsnapshot)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

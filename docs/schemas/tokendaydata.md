@@ -3,6 +3,9 @@ title: TokenDayData
 sidebar_position: 19
 ---
 
+Entities capturing the daily stats for a token across all of Uniswap.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | TokenDayData Entity ID. Format: `<token address>-<Timestamp rounded to the day by dividing by 86400>` |
@@ -19,3 +22,9 @@ sidebar_position: 19
 |high | BigDecimal! | | High Price of the token |
 |low | BigDecimal! | | Low Price of the token |
 |close | BigDecimal! | | Close Price of the token |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[updateTokenDayData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetokendaydata)|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

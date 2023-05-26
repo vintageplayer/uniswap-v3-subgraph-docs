@@ -3,6 +3,9 @@ title: Burn
 sidebar_position: 10
 ---
 
+Entity to stores the details of a burn event emitted while removing liquidity from a pool.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Burn Entity ID. Format: `<transaction hash>#<index in transaction.burns array>` |
@@ -20,3 +23,9 @@ sidebar_position: 10
 |tickLower | BigInt! | | Lower tick of the position  |
 |tickUpper | BigInt! | | Upper tick of the position |
 |logIndex | BigInt | | Order of the Burn event within the logs of the transaction |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

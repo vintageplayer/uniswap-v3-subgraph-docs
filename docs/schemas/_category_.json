@@ -1,6 +1,6 @@
 {
   "label": "Entity Schemas",
-  "position": 3,
+  "position": 5,
   "link": {
     "type": "generated-index",
     "description": "Details of the Schemas for each entity defined in the schema file"

@@ -3,6 +3,9 @@ title: Pool
 sidebar_position: 4
 ---
 
+Entity to store a pool's metadata, current & lifetime metrics and links to events and hourly/daily metrics and references to it's tick entities.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Pool Contract Address |
@@ -41,3 +44,18 @@ sidebar_position: 4
 |swaps | [[Swap](./swap)!]! | @derivedFrom(field: "pool") | Swap Events emitted from the Pool |
 |collects | [[Collect](./collect)!]! | @derivedFrom(field: "pool") | Collect Events emitted from the Pool |
 |ticks | [[Tick](./tick)!]! | @derivedFrom(field: "pool") | Tick entities respresenting the Pool liquidity |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[handlePoolCreated()](../functions-n-handlers/mappings/factory.ts#handlepoolcreated)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[updatePoolDayData()](../functions-n-handlers/utils/intervalUpdates.ts#updatepooldaydata)||<center>:white_check_mark:</center>|||
+|[updatePoolHourData()](../functions-n-handlers/utils/intervalUpdates.ts#updatepoolhourdata)||<center>:white_check_mark:</center>|||
+|[getEthPriceInUSD()](../functions-n-handlers/utils/pricing.ts#getethpriceinusd)||<center>:white_check_mark:</center>|||
+|[findEthPerToken()](../functions-n-handlers/utils/pricing.ts#findethpertoken)||<center>:white_check_mark:</center>|||
+|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleFlash()](../functions-n-handlers/mappings/core.ts#handleflash)|||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

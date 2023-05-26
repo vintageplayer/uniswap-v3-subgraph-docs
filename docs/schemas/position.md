@@ -3,6 +3,9 @@ title: Position
 sidebar_position: 6
 ---
 
+Entity to store details of a position created through [NonfungiblePositionManager](../contracts/nonfungiblepositionmanager). Stores it's metadata, deposited/withdrawn tokens, fee variables and transactions where it participated.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Position NFT Token ID |
@@ -22,3 +25,16 @@ sidebar_position: 6
 |transaction | [Transaction](./transaction)! | | [Transaction entity](./transaction) in which the position was created |
 |feeGrowthInside0LastX128 | BigInt! | | Tracking the amount of token0 fee accumulated by the position |
 |feeGrowthInside1LastX128 | BigInt! | | Tracking the amount of token1 fee accumulated by the position |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[getPosition()](../functions-n-handlers/mappings/position-manager.ts#getposition)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>||
+|[updateFeeVars()](../functions-n-handlers/mappings/position-manager.ts#updatefeevars)|||<center>:white_check_mark:</center>||
+|[savePositionSnapshot()](../functions-n-handlers/mappings/position-manager.ts#savepositionsnapshot)||<center>:white_check_mark:</center>|||
+|[handleIncreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handleincreaseliquidity)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleDecreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handledecreaseliquidity)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleCollect()](../functions-n-handlers/mappings/position-manager.ts#handlecollect)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleTransfer()](../functions-n-handlers/mappings/position-manager.ts#handletransfer)|||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[()](../functions-n-handlers/mappings/)|||||

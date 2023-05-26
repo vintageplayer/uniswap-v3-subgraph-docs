@@ -3,6 +3,9 @@ title: Collect
 sidebar_position: 12
 ---
 
+Entity to store details of a collect event emitted while removing tokens from a position.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Collect Entity ID. Format: `<transaction hash>#<index in transaction.collects array>` |
@@ -16,3 +19,9 @@ sidebar_position: 12
 |tickLower | BigInt! | | Lower tick of the position  |
 |tickUpper | BigInt! | | Upper tick of the position |
 |logIndex | BigInt | | Order of the Collect Event within the logs of the transaction |
+
+## Referencing Functions
+
+:::danger 
+Couldn't find any references to collect schema
+:::

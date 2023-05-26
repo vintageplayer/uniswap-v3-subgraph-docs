@@ -3,6 +3,9 @@ title: PoolDayData
 sidebar_position: 15
 ---
 
+Entity to store the daily metrics for each pool.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | PoolDayData Entity ID. Format: `<pool.address>-<Timestamp rounded to current day by dividing by 86400>` |
@@ -25,3 +28,10 @@ sidebar_position: 15
 |high | BigDecimal! | | High Price of token0 |
 |low | BigDecimal! | | Low Price of token0 |
 |close | BigDecimal! | | Close Price of token0 |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[updatePoolDayData()](../functions-n-handlers/utils/intervalUpdates.ts#updatepooldaydata)|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

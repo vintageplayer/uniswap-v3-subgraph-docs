@@ -3,6 +3,9 @@ title: Mint
 sidebar_position: 9
 ---
 
+Entity to store details of a mint event emitted while adding liquidity to a pool.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Mint Entity ID. Format: `<transaction hash>#<index in transaction.mints array>` |
@@ -21,3 +24,9 @@ sidebar_position: 9
 |tickLower | BigInt! | | Lower tick of the position  |
 |tickUpper | BigInt! | | Upper tick of the position |
 |logIndex | BigInt | | Order of the Mint Event within the logs of the transaction |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

@@ -3,6 +3,9 @@ title: Flash
 sidebar_position: 13
 ---
 
+Entity to store details of a flash event emitted while a flash loan was taken from a pool.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Flash Entity ID. Format: `<transaction hash>#<index in transaction.flashed array>` |
@@ -17,3 +20,9 @@ sidebar_position: 13
 |amount0Paid | BigDecimal! | | Amount of token0 paid for the flash operation | 
 |amount1Paid | BigDecimal! | | Amount of token1 paid for the flash operation | 
 |logIndex | BigInt | | Order of the Flash Event within the logs of the transaction |
+
+## Referencing Functions
+
+:::danger 
+Couldn't find any references to collect schema
+:::

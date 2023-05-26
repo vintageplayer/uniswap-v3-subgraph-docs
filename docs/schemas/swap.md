@@ -3,6 +3,9 @@ title: Swap
 sidebar_position: 11
 ---
 
+Entity to stores details of a swap event emitted while swapping one token for the other in a pool.
+
+## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
 |id | ID! | | Swap Entity ID. Format: `<transaction hash>#<index in transaction.swaps array>` |
@@ -20,3 +23,9 @@ sidebar_position: 11
 |sqrtPriceX96 | BigInt! | | The sqrt(price) of the pool after the swap, as a Q64.96 |
 |tick | BigInt! | | The tick after the swap |
 |logIndex | BigInt | | Order of the swap event within the logs of the transaction |
+
+## Referencing Functions
+
+|FunctionName|Create|Read|Update|Save|
+|-|-|-|-|-|
+|[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
