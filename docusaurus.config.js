@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Docs - Uniswap v3 Subgraph',
   tagline: 'Subgraph Docs are important',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
@@ -62,7 +62,7 @@ const config = {
         title: 'Uniswap Subgraph Docs',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/favicon.png',
         },
         items: [          
           {
