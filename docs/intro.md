@@ -12,27 +12,6 @@ If you're completely new to the working of the V3 protocol, would recommend goin
 ## Uniswap Foundation
 The docs was possible as I recieved a grant from [Uniswap Foundation](https://uniswapfoundation.mirror.xyz/). The foundation publishes [grant wishlist for RFPs](https://uniswap.notion.site/Uniswap-Foundation-Grants-Wish-List-3be614ba4e504b5caeee7b0159e64a42) regularly if you wish to get involved.
 
-## External Links
-
-### Repo Links:
- - [V3 Subgraph Repo](https://github.com/Uniswap/v3-subgraph/tree/main)
- - [V3 Core Contracts Repo](https://github.com/Uniswap/v3-core) - Mainly for factory and pool contracts
- - [V3 Periphery Contract Repo](https://github.com/Uniswap/v3-periphery) - Mainly for NonFungiblePositionManager Contract
-
-### Subgraphs
- - [Mainnet Subgraph](https://thegraph.com/hosted-service/subgraph/uniswap/uniswap-v3)
-
-### References
- - [Uniswap V3 Core Whitepaper](https://uniswap.org/whitepaper-v3.pdf)
- - [Liquidity Math in Uniswap V3](https://atiselsts.github.io/pdfs/uniswap-v3-liquidity-math.pdf)
- - [Uniswap V3 Development Book](https://uniswapv3book.com/)
- 
-### Misc
- - [Uniswap Hacker Getting Started Guide](https://uniswap.notion.site/uniswap/Uniswap-Hacker-Getting-Started-Guide-781b008a16c849c8bf4d9920744e77f5)
- - [Uniswap Docs](https://docs.uniswap.org/) ([Code Repo](https://github.com/Uniswap/docs/tree/main))
- - [Uniswap Info Site](https://info.uniswap.org/#/) to see the pool and token stats using the subgraph
- - [V3 New Chain Deployment Guide](https://github.com/Uniswap/v3-new-chain-deployments) (Slightly Outdated)
-
 ### Get In Touch
 For any updates or additions, you can raise a PR to the [docs repo](https://github.com/vintageplayer/uniswap-v3-subgraph-docs).
 

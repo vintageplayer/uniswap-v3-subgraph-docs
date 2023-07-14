@@ -1,6 +1,6 @@
 ---
 title: Entity Types
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 Following Entity Types are defined in the graph [schema file](https://github.com/Uniswap/v3-subgraph/blob/main/schema.graphql):
