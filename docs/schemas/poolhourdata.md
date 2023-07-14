@@ -34,4 +34,6 @@ Entity to store the hourly stats for each pool.
 |FunctionName|Create|Read|Update|Save|
 |-|-|-|-|-|
 |[updatePoolHourData()](../functions-n-handlers/utils/intervalUpdates.ts#updatehourdaydata)|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
-|[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:*</center>|
+
+\* -> Different across chains

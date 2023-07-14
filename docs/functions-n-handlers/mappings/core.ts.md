@@ -3,6 +3,9 @@ sidebar_position: 1
 title: core.ts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 path: [`/src/mappings/core.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/core.ts)
 
 ### handleInitialize()
@@ -17,10 +20,25 @@ ReturnType: void
 - Updates Eth's USD price using `getEthPriceInUSD()` .
 - Updates the token's prices relative to Eth using `findEthPerToken()`.
 
+<Tabs>
+    <TabItem value="Eth Mainnet" lable="Eth Mainnet">
+
 #### Entities
 1. [Pool](../../schemas/pool) - Read & Write
 2. [Token](../../schemas/token) - Write
 3. [Bundle](../../schemas/bundle) - Write
+
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+#### Entities
+1. [Pool](../../schemas/pool) - Read, Values set, but not saved
+2. [Token](../../schemas/token) - Write
+3. [Bundle](../../schemas/bundle) - Write
+
+</TabItem>
+</Tabs>
+
 
 #### Dependencies:
 1. [updatePoolDayData()](../utils/intervalUpdates.ts#updatepooldaydata)
@@ -131,6 +149,9 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 - If the updated `pool.tick` is initialized, updates it's fee variables using `loadTickUpdateFeeVarsAndSave()`.
 - Iterates over all the ticks crossed with the swap (oldTick to newTick) and updates their fee fields using `loadTickUpdateFeeVarsAndSave()`. If the number of ticks cross is more than 100, the updates are ignored to prevent timeouts.
 
+<Tabs>
+    <TabItem value="Eth Mainnet" lable="Eth Mainnet">
+
 #### Entities
 1. [Bundle](../../schemas/bundle) - Read & Write
 2. [Pool](../../schemas/pool) - Read & Write
@@ -143,6 +164,27 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 9. [PoolHourData](../../schemas/poolhourdata) - Write
 10. [TokenDayData](../../schemas/tokendaydata) - Write
 11. [TokenHourData](../../schemas/tokenhourdata) - Write
+
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+#### Entities
+1. [Bundle](../../schemas/bundle) - Read & Write
+2. [Pool](../../schemas/pool) - Read & Write
+3. [Token](../../schemas/token) - Read, Values set, but not saved
+4. [Factory](../../schemas/factory) - Read & Write
+5. [Tick](../../schemas/tick) - Read/Create & Write
+6. [Swap](../../schemas/swap) - Create & Write
+7. [UniswapDayData](../../schemas/uniswapdaydata) - Write
+8. [PoolDayData](../../schemas/pooldaydata) - Write
+9. [PoolHourData](../../schemas/poolhourdata) - Values set, but not saved
+10. [TokenDayData](../../schemas/tokendaydata) - Write
+11. [TokenHourData](../../schemas/tokenhourdata) - Write
+
+
+</TabItem>
+</Tabs>
+
 
 #### ABI Dependencies:
 1. pool.json

@@ -54,8 +54,10 @@ Entity to store a pool's metadata, current & lifetime metrics and links to event
 |[updatePoolHourData()](../functions-n-handlers/utils/intervalUpdates.ts#updatepoolhourdata)||<center>:white_check_mark:</center>|||
 |[getEthPriceInUSD()](../functions-n-handlers/utils/pricing.ts#getethpriceinusd)||<center>:white_check_mark:</center>|||
 |[findEthPerToken()](../functions-n-handlers/utils/pricing.ts#findethpertoken)||<center>:white_check_mark:</center>|||
-|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:*</center>|
 |[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleFlash()](../functions-n-handlers/mappings/core.ts#handleflash)|||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+
+\* -> Different across chains

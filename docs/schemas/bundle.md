@@ -22,5 +22,10 @@ Entity to store the current Eth price in USD.
 |[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)||<center>:white_check_mark:</center>|||
 |[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)||<center>:white_check_mark:</center>|||
 |[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleIncreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handleincreaseliquidity)||<center>:white_check_mark:*</center>|||
+|[handleDecreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handledecreaseliquidity)||<center>:white_check_mark:*</center>|||
+|[handleCollect()](../functions-n-handlers/mappings/position-manager.ts#handlecollect)||<center>:white_check_mark:*</center>|||
 |[updateTokenDayData()](../functions-n-handlers/utils/intervalupdates.ts#updatetokendaydata)||<center>:white_check_mark:</center>|||
 |[updateTokenHourData()](../functions-n-handlers/utils/intervalupdates.ts#updatetokenhourdata)||<center>:white_check_mark:</center>|||
+
+\* -> Varies across chains

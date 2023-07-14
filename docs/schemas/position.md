@@ -24,6 +24,9 @@ Entity to store details of a position created through [NonfungiblePositionManage
 |collectedToken1 | BigDecimal! | | Total amount of token1 collected (inclusive of burn amounts) | mainnet |
 |collectedFeesToken0 | BigDecimal! | | Total amount token0 fee collected |
 |collectedFeesToken1 | BigDecimal! | | Total amount token1 fee collected |
+|amountDepositedUSD | BigDecimal! | | Total amount deposited in terms of USD | mainnet |
+|amountWithdrawnUSD | BigDecimal! | | Total amount withdrawn in terms of USD | mainnet |
+|amountCollectedUSD | BigDecimal! | | Total amount collected in terms of USD | mainnet |
 |transaction | [Transaction](./transaction)! | | [Transaction entity](./transaction) in which the position was created |
 |feeGrowthInside0LastX128 | BigInt! | | Tracking the amount of token0 fee accumulated by the position |
 |feeGrowthInside1LastX128 | BigInt! | | Tracking the amount of token1 fee accumulated by the position |

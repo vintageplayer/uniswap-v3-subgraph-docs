@@ -24,6 +24,13 @@ path: [`/src/utils/pricing.ts`](https://github.com/Uniswap/v3-subgraph/blob/main
 - value: '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'
 ```
 </TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-one">
+
+```
+- type: string
+- value: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
+```
+</TabItem>
 </Tabs>
 Address of wrapped-ETH (WETH) contract on ethereum mainnet.
 
@@ -45,6 +52,13 @@ Address of wrapped-ETH (WETH) contract on ethereum mainnet.
 ```
 - type: string
 - value: '0x0e44ceb592acfc5d3f09d996302eb4c499ff8c10'
+```
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-one">
+
+```
+- type: string
+- value: '0x17c14d2c404d167802b16c450d3c99f88f2c4f4d'
 ```
 </TabItem>
 </Tabs>
@@ -93,6 +107,16 @@ The following token addresses are present in the list:
 |WMATIC|[0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270](https://polygonscan.com/address/0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270)|
 |USDC|[0x2791bca1f2de4661ed88a30c99a7a9449aa84174](https://polygonscan.com/address/0x2791bca1f2de4661ed88a30c99a7a9449aa84174)|
 |DAI|[0x8f3cf7ad23cd3cadbd9735aff958023239c6a063](https://polygonscan.com/address/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063)|
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-one">
+
+
+|Symbol|Address|
+|-|-|
+|WETH|`WETH_ADDRESS`*|
+|USDC|[0xff970a61a04b1ca14834a43f5de4533ebddb5cc8](https://arbiscan.io/address/0xff970a61a04b1ca14834a43f5de4533ebddb5cc8)|
+|DAI|[0xda10009cbd5d07dd0cecc66161fc93d7c9000da1](https://arbiscan.io/address/0xda10009cbd5d07dd0cecc66161fc93d7c9000da1)|
+|USDT|[0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9](https://arbiscan.io/address/0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9)|
 </TabItem>
 </Tabs>
 
