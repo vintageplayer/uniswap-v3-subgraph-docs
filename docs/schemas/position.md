@@ -6,8 +6,8 @@ sidebar_position: 6
 Entity to store details of a position created through [NonfungiblePositionManager](../contracts/nonfungiblepositionmanager). Stores it's metadata, deposited/withdrawn tokens, fee variables and transactions where it participated.
 
 ## Schema
-|Field|Type|derivedFrom|Description|
-|-|-|-|-|
+|Field|Type|derivedFrom|Description|Field missing|
+|-|-|-|-|-|
 |id | ID! | | Position NFT Token ID |
 |owner | Bytes! | | Position NFT owner's address |
 |pool | [Pool](./pool)! | | [Pool](./pool) where the position staked the tokens |
@@ -20,6 +20,8 @@ Entity to store details of a position created through [NonfungiblePositionManage
 |depositedToken1 | BigDecimal! | | Total amount token1 ever deposited to the position |
 |withdrawnToken0 | BigDecimal! | | Total amount token0 withdrawn to the position (excluding fees) |
 |withdrawnToken1 | BigDecimal! | | Total amount token1 withdrawn to the position (excluding fees) |
+|collectedToken0 | BigDecimal! | | Total amount of token0 collected (inclusive of burn amounts) | mainnet |
+|collectedToken1 | BigDecimal! | | Total amount of token1 collected (inclusive of burn amounts) | mainnet |
 |collectedFeesToken0 | BigDecimal! | | Total amount token0 fee collected |
 |collectedFeesToken1 | BigDecimal! | | Total amount token1 fee collected |
 |transaction | [Transaction](./transaction)! | | [Transaction entity](./transaction) in which the position was created |
