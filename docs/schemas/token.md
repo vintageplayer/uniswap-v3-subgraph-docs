@@ -35,7 +35,7 @@ Entity to stores the metadata and token level metrics for a token present in any
 |[getTrackedAmountUSD()](../functions-n-handlers/utils/pricing.ts#gettrackedamountusd)||<center>:white_check_mark:</center>|||
 |[updateTokenDayData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetokendaydata)||<center>:white_check_mark:</center>|||
 |[updateTokenHourData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetokenhourdata)||<center>:white_check_mark:</center>|||
-|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)||<center>:white_check_mark:*</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:*</center>|

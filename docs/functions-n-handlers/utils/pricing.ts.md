@@ -150,6 +150,11 @@ A list of ERC20 token contract addresses which have stable coin prices, i.e., 1 
 |USDC|[0x2791bca1f2de4661ed88a30c99a7a9449aa84174](https://polygonscan.com/address/0x2791bca1f2de4661ed88a30c99a7a9449aa84174)|
 
 </TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- `STABLE_COINS` is not defined for arbitrum-one subgraph.
+
+</TabItem>
 </Tabs>
 
 #### Referenced at:
@@ -161,8 +166,13 @@ A list of ERC20 token contract addresses which have stable coin prices, i.e., 1 
 
 ```
  - type: BigDecimal
- - value: 52
+ - value: 60
 ```
+While calculating token price in USD, the value of other token locked in the pool in terms of eth has to be greated than `MINIMUM_ETH_LOCKED`.
+
+#### Referenced at:
+1. [findEthPertoken()](#findethpertoken)
+
 </TabItem>
 <TabItem value="Polygon" lable="Polygon">
 
@@ -171,11 +181,18 @@ A list of ERC20 token contract addresses which have stable coin prices, i.e., 1 
  - value: 5
 ```
 </TabItem>
-</Tabs>
-While calculating token price in USD, the value of other token locked in the pool in terms of eth has to be greated than `MINIMUM_ETH_LOCKED`.
+<TabItem value="Arbitrum-One" lable="Arbitrum-one">
 
-#### Referenced at:
-1. [findEthPertoken()](#findethpertoken)
+```
+ - type: BigDecimal
+ - value: 4
+```
+
+#### Additionally Referenced at:
+1. [getEthPriceInUSD()](#getethpriceinusd)
+
+</TabItem>
+</Tabs>
 
 ### sqrtPriceX96ToTokenPrices()
 ```
@@ -210,6 +227,9 @@ Params: none
 
 ReturnType: BigDecimal
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 Returns the Price of ETH in terms of USD, based on the stable coin pools.
 Currently, the `token0Price` for the `pool` represented by `USDC_WETH_03_POOL`. When `pool` entity is not found, returns `ZERO_BD`.
 
@@ -224,6 +244,17 @@ Currently, the `token0Price` for the `pool` represented by `USDC_WETH_03_POOL`. 
 1. [handleInitialize()](../mappings/core.ts#handleinitialize)
 2. [handleSwap()](../mappings/core.ts#handleSwap)
 
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Logic same as mainnet, except returns `ZERO_BD` if eth locked is not greated than `MINIMUM_ETH_LOCKED`.
+
+#### Additional Dependencies:
+1. [MINIMUM_ETH_LOCKED](#minimum_eth_locked)
+
+</TabItem>
+</Tabs>   
+
 ### findEthPerToken()
 ```
 Params:
@@ -231,6 +262,9 @@ Params:
 
 ReturnType: BigDecimal
 ```
+<Tabs>
+<TabItem value="Eth Mainnet, Polygon" lable="Eth Mainnet, Polygon">
+
 If token is weth, returns 1. If token in `STABLE_COINS`, returns `1/bundle.ethPriceUSD`.
 
 Else, iterates over all the whitelisted pools for the token using `token.whitelistPools`. Finds the pool with largest liquidity value in terms of ETH, as long as the value is atleast `MINIMUM_ETH_LOCKED`. Uses the eth value of the paired token and relative token price between the token pair to find the `token`'s' value in terms of eth.
@@ -251,6 +285,12 @@ If there's no whitelisted pool with `MINIMUM_ETH_LOCKED`, returns `ZERO_BD`.
 #### Invoked at:
 1. [handleInitialize()](../mappings/core.ts#handleinitialize)
 2. [handleSwap()](../mappings/core.ts#handleSwap)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+- Doesn't check if token is present in `STABLE_COINS`. Rest of the logic is same as mainnet.
+</TabItem>
+</Tabs>
 
 ### getTrackedAmountUSD()
 ```

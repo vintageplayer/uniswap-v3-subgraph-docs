@@ -3,6 +3,9 @@ sidebar_position: 6
 title: tick.ts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 path: [`/src/utils/tick.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/tick.ts)
 
 ### createTick()
@@ -15,6 +18,9 @@ Params:
 
 ReturnType: Tick
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 Initializes a new Tick to store the liquidity present in at the specific tick.
 
 Sets `tick.id`, `tick.tickIdx`, `tick.pool` and `tick.poolId` from the parametrs. Sets `tick.creatdAtTimeStamp` and `tick.createdAtBlockNumber` from `event.block.timestamp` and `event.block.number` respectively.
@@ -36,6 +42,13 @@ All the other parameters are initialized to `ZERO_BD` or `ZERO_BI`.
 #### Invoked at:
 1. [handleMint()](../mappings/core.ts#handlemint)
 
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Logic same as mainnet, except doesn't initialize the variables `tick.feeGrowthOutside0X128` and  `tick.feeGrowthOutside1X128`
+
+</TabItem>
+</Tabs>   
 
 ### feeTierToTickSpacing()
 ```
@@ -44,6 +57,9 @@ Params:
 
 ReturnType: BigInt
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 Given a specific fee tier, returns a BigInt value for the respective tick spacing used in the pool contract.
 
 |Fee Tier|TickSpaceing Returned|
@@ -56,3 +72,11 @@ Given a specific fee tier, returns a BigInt value for the respective tick spacin
 
 #### Invoked at:
 1. [handleSwap()](../mappings/core.ts#handleswap)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Doesn't have the Fee Tier `100`, Tick Space `1` entry.
+
+</TabItem>
+</Tabs>   

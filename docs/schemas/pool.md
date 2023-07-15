@@ -6,8 +6,8 @@ sidebar_position: 4
 Entity to store a pool's metadata, current & lifetime metrics and links to events and hourly/daily metrics and references to it's tick entities.
 
 ## Schema
-|Field|Type|derivedFrom|Description|
-|-|-|-|-|
+|Field|Type|derivedFrom|Description|Field Missing|
+|-|-|-|-|-|
 |id | ID! | | Pool Contract Address |
 |createdAtTimestamp | BigInt! | | BlockTime where the pool was created |
 |createdAtBlockNumber | BigInt! | | Block Number where the pool was created |
@@ -16,8 +16,8 @@ Entity to store a pool's metadata, current & lifetime metrics and links to event
 |feeTier | BigInt! | | The percentage of token taken as fee in terms of basis points |
 |liquidity | BigInt! | | Liquidity in the currently active tick range |
 |sqrtPrice | BigInt! | | The current token pair price tracked in square root & Q96 format |
-|feeGrowthGlobal0X128 | BigInt! | | The total fee in token0 per unit of liquidity collected by the pool |
-|feeGrowthGlobal1X128 | BigInt! | | The total fee in token1 per unit of liquidity collected by the pool |
+|feeGrowthGlobal0X128 | BigInt! | | The total fee in token0 per unit of liquidity collected by the pool | arbitrum-one |
+|feeGrowthGlobal1X128 | BigInt! | | The total fee in token1 per unit of liquidity collected by the pool | arbitrum-one |
 |token0Price | BigDecimal! | | Price of token0 in terms of token1 |
 |token1Price | BigDecimal! | | Price of token1 in terms of token0 |
 |tick | BigInt | | The current active [tick](./tick) |

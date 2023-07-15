@@ -6,6 +6,10 @@ title: position-manager.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::danger File Missing
+The complete file is missing for arbitrum-one
+:::
+
 path: [`/src/mappings/position-manager.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/position-manager.ts)
 
 ### getPosition()
@@ -110,36 +114,28 @@ ReturnType: void
 1. [Position](../../schemas/position) - Write
 2. [Token](../../schemas/token) - Read
 
-</TabItem>
-<TabItem value="Polygon" lable="Polygon">
-
-:::info Ignored Blocks and Addresses
- - Pool address 0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248 (MULAN-USDT) is ignored by the function.
-:::
-
-- Fetches the position entity using `getPosition()`, passing `event.params.tokenId` and `event` as parameters.
-- Updates fields `position.liquidity`, `position.depositedToken0` and `position.depositedToken1`.
-- Updates field `position.amountDepositedUSD` by deriving `amount0` and `amount1` in their respective USD priced using `bundle.ethPriceUSD` and `token.derivedETH`.
-- Triggers `updateFeeVars()` and `savePositionSnapshot()`
-
-#### Entities
-1. [Position](../../schemas/position) - Write
-2. [Token](../../schemas/token) - Read
-3. [Bundle](../../schemas/bundle) - Read
-
-</TabItem>
-</Tabs>
-
 #### Dependencies:
 1. [getPosition()](#getposition)
 2. [convertTokenToDecimal()](../utils/index.ts#converttokentodecimal)
 3. [updateFeeVars()](#updatefeevars)
 4. [savePositionSnapshot()](#savepositionsnapshot)
 
-
-
 #### Invoked at:
 1. [IncreaseLiquidity Event (Handler)](../../events)
+
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+Follows most of the logic of mainnet except the following points:
+
+- No blocks ingored like mainnet.
+- Updates field `position.amountDepositedUSD` by deriving `amount0` and `amount1` in their respective USD priced using `bundle.ethPriceUSD` and `token.derivedETH`.
+
+#### Additional Entities Referenced
+1. [Bundle](../../schemas/bundle) - Read
+
+</TabItem>
+</Tabs>
 
 ### handleDecreaseLiquidity()
 ```
@@ -164,26 +160,6 @@ ReturnType: void
 1. [Position](../../schemas/position) - Write
 2. [Token](../../schemas/token) - Read
 
-</TabItem>
-<TabItem value="Polygon" lable="Polygon">
-
-:::info Ignored Blocks and Addresses
- - Pool address 0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248 (MULAN-USDT) is ignored by the function.
-:::
-
-- Fetches the position entity using `getPosition()`, passing `event.params.tokenId` and `event` as parameters.
-- Updates fields `position.liquidity`, `position.withdrawnToken0` and `position.withdrawnToken1`.
-- Updates field `position.netWithdrawnUSD` by deriving `amount0` and `amount1` in their respective USD priced using `bundle.ethPriceUSD` and `token.derivedETH`.
-- Triggers `updateFeeVars()` and `savePositionSnapshot()`
-
-#### Entities
-1. [Position](../../schemas/position) - Write
-2. [Token](../../schemas/token) - Read
-3. [Bundle](../../schemas/bundle) - Read
-
-</TabItem>
-</Tabs>
-
 #### Dependencies:
 1. [getPosition()](#getposition)
 2. [convertTokenToDecimal()](../utils/index.ts#converttokentodecimal)
@@ -192,6 +168,20 @@ ReturnType: void
 
 #### Invoked at:
 1. [DecreaseLiquidity Event (Handler)](../../events)
+
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+Follows most of the logic of mainnet except the following points:
+
+- No blocks ingored like mainnet
+- Updates field `position.netWithdrawnUSD` by deriving `amount0` and `amount1` in their respective USD priced using `bundle.ethPriceUSD` and `token.derivedETH`.
+
+#### Additional Entities
+1. [Bundle](../../schemas/bundle) - Read
+
+</TabItem>
+</Tabs>
 
 ### handleCollect()
 ```

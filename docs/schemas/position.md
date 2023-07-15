@@ -5,8 +5,12 @@ sidebar_position: 6
 
 Entity to store details of a position created through [NonfungiblePositionManager](../contracts/nonfungiblepositionmanager). Stores it's metadata, deposited/withdrawn tokens, fee variables and transactions where it participated.
 
+:::caution Entity Not Defined
+- Currently the entity is not defined for arbitrum-one chain
+:::
+
 ## Schema
-|Field|Type|derivedFrom|Description|Field missing|
+|Field|Type|derivedFrom|Description|Field Missing|
 |-|-|-|-|-|
 |id | ID! | | Position NFT Token ID |
 |owner | Bytes! | | Position NFT owner's address |

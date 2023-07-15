@@ -5,6 +5,10 @@ sidebar_position: 7
 
 Entity storing the state of a position after an action taken on the position.
 
+:::caution Entity Not Defined
+- Currently the entity is not defined for arbitrum-one chain
+:::
+
 ## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|

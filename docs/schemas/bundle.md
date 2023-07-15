@@ -18,7 +18,7 @@ Entity to store the current Eth price in USD.
 |[findEthPerToken()](../functions-n-handlers/utils/pricing.ts#findethpertoken)||<center>:white_check_mark:</center>|||
 |[getTrackedAmountUSD()](../functions-n-handlers/utils/pricing.ts#gettrackedamountusd)||<center>:white_check_mark:</center>|||
 |[handlePoolCreated()](../functions-n-handlers/mappings/factory.ts#handlepoolcreated)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
-|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)|||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)|||<center>:white_check_mark:*</center>|<center>:white_check_mark:*</center>|
 |[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)||<center>:white_check_mark:</center>|||
 |[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)||<center>:white_check_mark:</center>|||
 |[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|

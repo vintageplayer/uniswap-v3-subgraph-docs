@@ -10,8 +10,8 @@ An entity is created only if there is a change during the day
 :::
 
 ## Schema
-|Field|Type|derivedFrom|Description|
-|-|-|-|-|
+|Field|Type|derivedFrom|Description|Field Missing|
+|-|-|-|-|-|
 |id | ID! | | TickDayData Entity ID. Format: `<pool.address>-<Tick Index>-<Timestamp rounded to the day by dividing by 86400>` |
 |date | Int! | | Timestamp rounded to the day by dividing by 86400 |
 |pool | [Pool](./pool)! | | [Pool Entity](./pool) for which the daily tick metrics were recorded |
@@ -22,8 +22,8 @@ An entity is created only if there is a change during the day
 |volumeToken1 | BigDecimal! | | Daily volume of token1 with this tick in active range |
 |volumeUSD | BigDecimal! | | Daily swap value with this tick in active range in derived USD |
 |feesUSD | BigDecimal! | |  Daily swap fee with this tick in active range in derived USD |
-|feeGrowthOutside0X128 | BigInt! | | token0 fee accumulated marker outside the tick range at the end of the day |
-|feeGrowthOutside1X128 | BigInt! | | token1 fee accumulated marker outside the tick range at the end of the day |
+|feeGrowthOutside0X128 | BigInt! | | token0 fee accumulated marker outside the tick range at the end of the day | arbitrum-one |
+|feeGrowthOutside1X128 | BigInt! | | token1 fee accumulated marker outside the tick range at the end of the day | arbitrum-one |
 
 ## Referencing Functions
 

@@ -6,8 +6,8 @@ sidebar_position: 15
 Entity to store the daily metrics for each pool.
 
 ## Schema
-|Field|Type|derivedFrom|Description|
-|-|-|-|-|
+|Field|Type|derivedFrom|Description|Field Missing|
+|-|-|-|-|-|
 |id | ID! | | PoolDayData Entity ID. Format: `<pool.address>-<Timestamp rounded to current day by dividing by 86400>` |
 |date | Int! | | Timestamp rounded to hour by dividing by 86400 |
 |pool | [Pool](./pool)! | | [Pool Entity](./pool) for which the daily metrics are tracked |
@@ -16,8 +16,8 @@ Entity to store the daily metrics for each pool.
 |token0Price | BigDecimal! | | Price of token0 in terms of token1 at the end of the day |
 |token1Price | BigDecimal! | | Price of token1 in terms of token0 at the end of the day |
 |tick | BigInt | | Actice Tick at the end of the day |
-|feeGrowthGlobal0X128 | BigInt! | | Global Fee Marker Value for token0 at the end of the day |
-|feeGrowthGlobal1X128 | BigInt! | | Global Fee Marker Value for token1 at the end of the day |
+|feeGrowthGlobal0X128 | BigInt! | | Global Fee Marker Value for token0 at the end of the day | arbitrum-one |
+|feeGrowthGlobal1X128 | BigInt! | | Global Fee Marker Value for token1 at the end of the day | arbitrum-one |
 |tvlUSD | BigDecimal! | | TVL available at the end of the day derived in USD |
 |volumeToken0 | BigDecimal! | | Total daily volume in token0 |
 |volumeToken1 | BigDecimal! | | Total daily volume in token1 |

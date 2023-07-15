@@ -3,6 +3,9 @@ sidebar_position: 1
 title: constants.ts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 path: [`/src/utils/constants.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/constants.ts)
 
 ### ADDRESS_ZERO
@@ -65,6 +68,25 @@ Represents the null address in ethereum.
 6. [handleMint()](../mappings/core.ts#handlemint)
 7. [handleBurn()](../mappings/core.ts#handleburn)
 8. [handleSwap()](../mappings/core.ts#handleswap)
+
+### TWO_BI
+<Tabs>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+```
+- type: BigInt
+- value: 2
+```
+
+#### Referenced at:
+1. [bigDecimalExponated()](./index.ts#bigdecimalexponated)
+
+</TabItem>
+<TabItem value="Other Chains" lable="Other-Chains">
+	The Value is not present in any other chain.
+</TabItem>
+</Tabs>   
+
 
 ### ZERO_BD
 ```

@@ -8,6 +8,9 @@ sidebar_position: 2
 |Chain|Address|StartBlock|
 |-|-|-|
 |Mainnet|0xC36442b4a4522E871399CD717aBDD847Ab11FE88|12369651|
+|Polygon|0xC36442b4a4522E871399CD717aBDD847Ab11FE88|22760586|
+|Arbitrum-One|None|None|
+|Optimism|||
 
 ## Events Tracked
 

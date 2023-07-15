@@ -3,6 +3,9 @@ sidebar_position: 2
 title: index.ts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 path: [`/src/utils/index.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/index.ts)
 
 ### exponentToBigDecimal()
@@ -54,6 +57,9 @@ Params:
 
 ReturnType: BigDecimal
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 If `power` is `ZERO_BI`, `ONE_BD` is returned. `value` is multipled by itself in a simple for loop executed `abs(power)` number of times. If the `power` is negative, uses `safeDiv` to divide `ONE_BD` with the result of the previous calculation. Returns the result in BigDecimal.
 
 #### Dependencies:
@@ -65,6 +71,18 @@ If `power` is `ZERO_BI`, `ONE_BD` is returned. `value` is multipled by itself in
 
 #### Invoked at:
 1. [createTick()](./tick.ts#createtick)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Differs in logic to compute the exponent from other chains.
+- Instead of looping and multiplying `value` through `power` loop iterations, performs [simple exponentiation by squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring)
+
+#### Additional Dependencies:
+1. [TWO_BI](./constants.ts#two_bi)
+
+</TabItem>
+</Tabs>   
 
 ### tokenAmountToDecimal()
 ```

@@ -15,30 +15,18 @@ Params:
 
 ReturnType: void
 ```
+<Tabs>
+    <TabItem value="Eth Mainnet" lable="Eth Mainnet">
+
 - Handles the initialization of a new pool by setting it's `price` and current `tick` value.
 - Updates the pools daily and hourly metrics using `updatePoolDayData()` and `updatePoolHourData()`.
 - Updates Eth's USD price using `getEthPriceInUSD()` .
 - Updates the token's prices relative to Eth using `findEthPerToken()`.
 
-<Tabs>
-    <TabItem value="Eth Mainnet" lable="Eth Mainnet">
-
 #### Entities
 1. [Pool](../../schemas/pool) - Read & Write
 2. [Token](../../schemas/token) - Write
 3. [Bundle](../../schemas/bundle) - Write
-
-</TabItem>
-<TabItem value="Polygon" lable="Polygon">
-
-#### Entities
-1. [Pool](../../schemas/pool) - Read, Values set, but not saved
-2. [Token](../../schemas/token) - Write
-3. [Bundle](../../schemas/bundle) - Write
-
-</TabItem>
-</Tabs>
-
 
 #### Dependencies:
 1. [updatePoolDayData()](../utils/intervalUpdates.ts#updatepooldaydata)
@@ -48,6 +36,20 @@ ReturnType: void
 
 #### Invoked at:
 1. [Initialize Event (Handler)](../../events)
+
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+- Follows the logic of update, but doesn't save the `pool` entity.
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Doesn't save the pool entity
+- Doesn't update the Eth's USD price, or the token prices relative to ETh.
+
+</TabItem>
+</Tabs>
 
 ### handleMint()
 ```
@@ -135,6 +137,9 @@ ReturnType: void
 The following pool address is ignored by the function: [0x9663f2ca0454accad3e094448ea6f77443880454](https://etherscan.io/address/9663f2ca0454accad3e094448ea6f77443880454) (WETH-LUSD)
 :::
 
+<Tabs>
+<TabItem value="Eth Mainnet" lable="Eth Mainnet">
+
 - Calculates the tracked and untracked USD amount for the swap. `tracked` amount is the USD amount calculated only for tokens present in `WHITELIST_TOKEN` using `getTrackedAmountUSD`. `untracked` amount is calculated using `token.derivedETH * bundle.ethPriceUSD`. 
 - Calculates the fee in `ETH` & `USD` using the formula `amountTracked * (pool.feeTier/1,000,000)`.
 - Updates the fields for `txCount`, volume & fees (in eth & usd) and `untrackedVolumeUSD` for `pool`, `factory` & `token` entities.
@@ -149,9 +154,6 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 - If the updated `pool.tick` is initialized, updates it's fee variables using `loadTickUpdateFeeVarsAndSave()`.
 - Iterates over all the ticks crossed with the swap (oldTick to newTick) and updates their fee fields using `loadTickUpdateFeeVarsAndSave()`. If the number of ticks cross is more than 100, the updates are ignored to prevent timeouts.
 
-<Tabs>
-    <TabItem value="Eth Mainnet" lable="Eth Mainnet">
-
 #### Entities
 1. [Bundle](../../schemas/bundle) - Read & Write
 2. [Pool](../../schemas/pool) - Read & Write
@@ -164,27 +166,6 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 9. [PoolHourData](../../schemas/poolhourdata) - Write
 10. [TokenDayData](../../schemas/tokendaydata) - Write
 11. [TokenHourData](../../schemas/tokenhourdata) - Write
-
-</TabItem>
-<TabItem value="Polygon" lable="Polygon">
-
-#### Entities
-1. [Bundle](../../schemas/bundle) - Read & Write
-2. [Pool](../../schemas/pool) - Read & Write
-3. [Token](../../schemas/token) - Read, Values set, but not saved
-4. [Factory](../../schemas/factory) - Read & Write
-5. [Tick](../../schemas/tick) - Read/Create & Write
-6. [Swap](../../schemas/swap) - Create & Write
-7. [UniswapDayData](../../schemas/uniswapdaydata) - Write
-8. [PoolDayData](../../schemas/pooldaydata) - Write
-9. [PoolHourData](../../schemas/poolhourdata) - Values set, but not saved
-10. [TokenDayData](../../schemas/tokendaydata) - Write
-11. [TokenHourData](../../schemas/tokenhourdata) - Write
-
-
-</TabItem>
-</Tabs>
-
 
 #### ABI Dependencies:
 1. pool.json
@@ -212,6 +193,20 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 #### Invoked at:
 1. [Swap Event (Handler)](../../events)
 
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+- Follows the logic of mainnet except doesn't save the `token0HourData`, `token1HourData` and `poolHourData` entities.
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Follows the logic of mainnet except doesn't save the `token0HourData`, `token1HourData` and `poolHourData` entities.
+- Doesn't update the `pool.feeGrowthGlobal0X128` and `pool.feeGrowthGlobal1X128` values.
+
+</TabItem>
+</Tabs>
+
 ### handleFlash()
 ```
 Params:
@@ -219,6 +214,10 @@ Params:
 
 ReturnType: void
 ```
+
+<Tabs>
+<TabItem value="Eth Mainnet, Polygon" lable="Eth Mainnet, Polygon">
+
 - Sets `pool.feeGrowthGlobal0X128` and `pool.feeGrowthGlobal1X128` by reading the them from pool contract's blockchain state using the ABI.
 
 #### Entities
@@ -230,6 +229,12 @@ ReturnType: void
 #### Invoked at:
 1. [Flash Event (Handler)](../../events)
 
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+- Doesn't update anything. Only loads the pool entity and immediately saves it.
+</TabItem>
+</Tabs>
+
 ### updateTickFeeVarsAndSave()
 ```
 Params:
@@ -238,6 +243,10 @@ Params:
 
 ReturnType: void
 ```
+
+<Tabs>
+<TabItem value="Eth Mainnet, Polygon" lable="Eth Mainnet, Polygon">
+
 - Sets `tick.feeGrowthOutside0X128` and `tick.feeGrowthOutside1X128` by reading the tick from pool contract's blockchain state using the ABI.
 - Triggers update to tick day metrics by invoking `updateTickDayData()`.
 
@@ -254,6 +263,12 @@ ReturnType: void
 1. [handleMint()](#handlemint)
 2. [handleBurn()](#handleburn)
 3. [loadTickUpdateFeeVarsAndSave](#loadtickupdatefeevarsandsave)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+- Doesn't update anything. Only loads the ticks from pool contract and invokes save on the tick entity passed as parameter.
+</TabItem>
+</Tabs>
 
 ### loadTickUpdateFeeVarsAndSave()
 ```
