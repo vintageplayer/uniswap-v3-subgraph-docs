@@ -3,6 +3,9 @@ sidebar_position: 3
 title: intervalUpdates.ts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 path: [`/src/utils/intervalUpdates.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/intervalUpdates.ts)
 
 
@@ -37,6 +40,10 @@ Params:
 
 ReturnType: PoolDayData
 ```
+
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 Using `event.block.timestamp.toI32()/86400` and `event.address.toHexString()` to get the `dayID` and `poolID` respectively. Together also give the `poolDayDataID`.
 
 Creates a new `PoolDayData` entity for the day if not found. The new entity's metrics are initialized to `ZERO_BD` or `ZERO_BI`, while the `open`, `high`, `low` and `close` values are set to `pool.token0price`.
@@ -61,6 +68,13 @@ Note: Currently updates `poolDayData.close` only when a new entity is created.
 3. [handleBurn()](../mappings/core.ts#handleburn)
 4. [handleSwap()](../mappings/core.ts#handleswap)
 
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Uses the logic of mainnet but doesn't initialize or update `poolDayData.feeGrowthGlobal0X128` and `poolDayData.feeGrowthGlobal1X128` values.
+
+</TabItem>
+</Tabs>
 
 ### updatePoolHourData()
 ```
@@ -69,6 +83,9 @@ Params:
 
 ReturnType: PoolHourData
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 Using `event.block.timestamp.toI32()/3600` and `event.address.toHexString()` to get the `hourIndex` and `poolID` respectively. Together also give the `hourPoolID`.
 
 Creates a new `PoolHourData` entity for the specific hour if not found. The new entity's metrics are initialized to `ZERO_BD` or `ZERO_BI`, while the `open`, `high`, `low` and `close` values are set to `pool.token0price`.
@@ -90,6 +107,14 @@ Updates the rest of the metrics using values from `Pool` entity.
 2. [handleMint()](../mappings/core.ts#handlemint)
 3. [handleBurn()](../mappings/core.ts#handleburn)
 4. [handleSwap()](../mappings/core.ts#handleswap)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Uses the logic of mainnet but doesn't initialize or update `poolHourData.feeGrowthGlobal0X128` and `poolHourData.feeGrowthGlobal1X128` values.
+
+</TabItem>
+</Tabs>
 
 ### updateTokenDayData()
 ```
@@ -159,6 +184,9 @@ Params:
 
 ReturnType: TickDayData
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 Uses `event.block.timestamp.toI32() / 86400` to determine the `dayID`. Uses `dayId` and `tick.id` to get the `tickDayDataID`.
 
 Creates a new `TickDayData` entity for the specific day if not found. Initializes the fields `pool` and `tick` using `tick.pool` and `tick.id`  respectively.
@@ -170,3 +198,11 @@ Sets the `TickDayData` entity's field values using corresponding fields from `ti
 
 #### Invoked at:
 1. [updateTickFeeVarsAndSave()](../mappings/core.ts#updatetickfeevarsandsave)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Uses the logic of mainnet but doesn't initialize or update `tickDayData.feeGrowthOutside0X128` and `tickDayData.feeGrowthOutside1X128` values.
+
+</TabItem>
+</Tabs>

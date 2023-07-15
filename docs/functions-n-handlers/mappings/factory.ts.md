@@ -3,6 +3,9 @@ sidebar_position: 2
 title: factory.ts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 path: [`/src/mappings/factory.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/factory.ts)
 
 ### handlePoolCreated()
@@ -12,6 +15,9 @@ Params:
 
 ReturnType: void
 ```
+<Tabs>
+<TabItem value="Eth Mainnet, Polygon" lable="Eth Mainnet, Polygon">
+
 :::info Ignored Pool
 The following pool address is ignored by the function: [0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248](https://etherscan.io/address/0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248) (MULAN-USDT)
 :::
@@ -34,7 +40,7 @@ While creating either of the tokens, if the decimals value is not available, the
 4. [Token](../../schemas/token) - Read/Create & Write
 
 #### Contracts
-5. [Pool (Template)](../../contracts/pool) - Create
+1. [Pool (Template)](../../contracts/pool) - Create
 
 #### Dependencies:
 1. [FACTORY_ADDRESS](../utils/constants.ts#factory_address)
@@ -50,3 +56,20 @@ While creating either of the tokens, if the decimals value is not available, the
 
 #### Invoked at:
 1. [PoolCreated Event (Handler)](../../events)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Same logic as mainnet, but doesn't initialize `pool.feeGrowthGlobal0X128` and `pool.feeGrowthGlobal1X128` values.
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+- If factory doesn't exists, initializes poolCount to `104` instead of `ZERO_BI` and `factory.populated` to `false`
+- Before saving the pool entity, if `factory.populated` is false, invokes `populateEmptyPools()` to load the pool before regenisis and sets `factory.populated = true`.
+
+### Additional Dependencies
+1. [populateEmptyPools()](../utils/backfill.ts#populateemptypools)
+
+</TabItem>
+</Tabs>

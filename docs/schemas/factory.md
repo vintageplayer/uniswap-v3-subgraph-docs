@@ -8,7 +8,7 @@ Entity to capture metrics for all the pools deployed by a specific [factory cont
 ## Schema
 |Field|Type|derivedFrom|Description|
 |-|-|-|-|
-|id | ID! |  | Factory Contract address |
+|id | ID! |  | Factory Contract address | Field Missing |
 |poolCount | BigInt! |  | No. of pools created using the factory |
 |txCount | BigInt! |  | No. of all the transactions through pools mananged by the factory |
 |totalVolumeUSD | BigDecimal! |  | Total Volume all time in derived USD |
@@ -20,6 +20,7 @@ Entity to capture metrics for all the pools deployed by a specific [factory cont
 |totalValueLockedETH | BigDecimal! |  | TVL derived in ETH |
 |totalValueLockedUSDUntracked | BigDecimal! |  | TVL including tokens with unreliable USD prices in USD |
 |totalValueLockedETHUntracked | BigDecimal! |  | TVL including tokens with unreliable USD prices in ETH |
+|populated | Boolean |  | Flag capturing if the new pool is populated | All except optimism |
 |owner | ID! |  | Current Owner of the factory contract |
 
 ## Referencing Functions

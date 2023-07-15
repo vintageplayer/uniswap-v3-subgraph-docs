@@ -6,8 +6,8 @@ sidebar_position: 5
 Entity to stores the metadata for a tick in a pool, it's lifetime metrics and current liquidity and fee variables.
 
 ## Schema
-|Field|Type|derivedFrom|Description|
-|-|-|-|-|
+|Field|Type|derivedFrom|Description|Field Missing|
+|-|-|-|-|-|
 |id | ID! | | Tick ID. Format: `<pool address>#<tick address>`|
 |poolAddress | String | | [Pool](./pool) contract address |
 |tickIdx | BigInt! | | [Tick](./tick) Index |
@@ -27,8 +27,8 @@ Entity to stores the metadata for a tick in a pool, it's lifetime metrics and cu
 |createdAtTimestamp | BigInt! | | BlockTime when the tick was initialized |
 |createdAtBlockNumber | BigInt! | | BlockNumber when the tick was initialized |
 |liquidityProviderCount | BigInt! | | Used for detecting new exchanges. (Not Used currently) |
-|feeGrowthOutside0X128 | BigInt! | | Used for calculating token0 fee's accumulated outside a tick whenever it is crossed |
-|feeGrowthOutside1X128 | BigInt! | | Used for calculating token1 fee's accumulated outside a tick whenever it is crossed |
+|feeGrowthOutside0X128 | BigInt! | | Used for calculating token0 fee's accumulated outside a tick whenever it is crossed | arbitrum-one |
+|feeGrowthOutside1X128 | BigInt! | | Used for calculating token1 fee's accumulated outside a tick whenever it is crossed | arbitrum-one |
 
 ## Referencing Functions
 

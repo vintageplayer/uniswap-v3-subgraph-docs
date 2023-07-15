@@ -3,6 +3,9 @@ sidebar_position: 1
 title: core.ts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 path: [`/src/mappings/core.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/core.ts)
 
 ### handleInitialize()
@@ -12,6 +15,9 @@ Params:
 
 ReturnType: void
 ```
+<Tabs>
+    <TabItem value="Eth Mainnet" lable="Eth Mainnet">
+
 - Handles the initialization of a new pool by setting it's `price` and current `tick` value.
 - Updates the pools daily and hourly metrics using `updatePoolDayData()` and `updatePoolHourData()`.
 - Updates Eth's USD price using `getEthPriceInUSD()` .
@@ -30,6 +36,20 @@ ReturnType: void
 
 #### Invoked at:
 1. [Initialize Event (Handler)](../../events)
+
+</TabItem>
+<TabItem value="Polygon, Optimism" lable="Polygon, Optimism">
+
+- Follows the logic of update, but doesn't save the `pool` entity.
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Doesn't save the pool entity
+- Doesn't update the Eth's USD price, or the token prices relative to ETh.
+
+</TabItem>
+</Tabs>
 
 ### handleMint()
 ```
@@ -76,6 +96,9 @@ Params:
 
 ReturnType: void
 ```
+<Tabs>
+    <TabItem value="Other-Chains" lable="Other-Chains">
+
 - updates `txCount`, `totalValueLockedETH` and `totalValueLockedUSD` metrics for `pool`, `factory` and `token` entities.
 - Decreases `pool.liquidity` by `event.params.amount` if the current `pool.tick` value is within the burnt tick range.
 - Creates a new `Burn` entity using `transaction.id` and `pool.txCount` as `mint.id`. Sets the values from `event` parameters.
@@ -106,6 +129,18 @@ ReturnType: void
 #### Invoked at:
 1. [Burn Event (Handler)](../../events)
 
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+Most of the logic is same as mainnet subgraph with following changes:
+- While loading the `Tick` entities, if either one is not found, invokes `createTickBurn()` to create ticks and then proceeds with updating the liquidity values and metrics.
+
+### Additional Dependencies
+1. [createTickBurn()](../utils/tick.ts#createtickburn)
+
+</TabItem>
+</Tabs>
+
 ### handleSwap()
 ```
 Params:
@@ -116,6 +151,9 @@ ReturnType: void
 :::info Ignored Pool
 The following pool address is ignored by the function: [0x9663f2ca0454accad3e094448ea6f77443880454](https://etherscan.io/address/9663f2ca0454accad3e094448ea6f77443880454) (WETH-LUSD)
 :::
+
+<Tabs>
+<TabItem value="Eth Mainnet" lable="Eth Mainnet">
 
 - Calculates the tracked and untracked USD amount for the swap. `tracked` amount is the USD amount calculated only for tokens present in `WHITELIST_TOKEN` using `getTrackedAmountUSD`. `untracked` amount is calculated using `token.derivedETH * bundle.ethPriceUSD`. 
 - Calculates the fee in `ETH` & `USD` using the formula `amountTracked * (pool.feeTier/1,000,000)`.
@@ -170,6 +208,20 @@ The following pool address is ignored by the function: [0x9663f2ca0454accad3e094
 #### Invoked at:
 1. [Swap Event (Handler)](../../events)
 
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+- Follows the logic of mainnet except doesn't save the `token0HourData`, `token1HourData` and `poolHourData` entities.
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+
+- Follows the logic of mainnet except doesn't save the `token0HourData`, `token1HourData` and `poolHourData` entities.
+- Doesn't update the `pool.feeGrowthGlobal0X128` and `pool.feeGrowthGlobal1X128` values.
+
+</TabItem>
+</Tabs>
+
 ### handleFlash()
 ```
 Params:
@@ -177,6 +229,10 @@ Params:
 
 ReturnType: void
 ```
+
+<Tabs>
+<TabItem value="Eth Mainnet, Polygon" lable="Eth Mainnet, Polygon">
+
 - Sets `pool.feeGrowthGlobal0X128` and `pool.feeGrowthGlobal1X128` by reading the them from pool contract's blockchain state using the ABI.
 
 #### Entities
@@ -188,6 +244,12 @@ ReturnType: void
 #### Invoked at:
 1. [Flash Event (Handler)](../../events)
 
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+- Doesn't update anything. Only loads the pool entity and immediately saves it.
+</TabItem>
+</Tabs>
+
 ### updateTickFeeVarsAndSave()
 ```
 Params:
@@ -196,6 +258,10 @@ Params:
 
 ReturnType: void
 ```
+
+<Tabs>
+<TabItem value="Eth Mainnet, Polygon" lable="Eth Mainnet, Polygon">
+
 - Sets `tick.feeGrowthOutside0X128` and `tick.feeGrowthOutside1X128` by reading the tick from pool contract's blockchain state using the ABI.
 - Triggers update to tick day metrics by invoking `updateTickDayData()`.
 
@@ -212,6 +278,12 @@ ReturnType: void
 1. [handleMint()](#handlemint)
 2. [handleBurn()](#handleburn)
 3. [loadTickUpdateFeeVarsAndSave](#loadtickupdatefeevarsandsave)
+
+</TabItem>
+<TabItem value="Arbitrum-One" lable="Arbitrum-One">
+- Doesn't update anything. Only loads the ticks from pool contract and invokes save on the tick entity passed as parameter.
+</TabItem>
+</Tabs>
 
 ### loadTickUpdateFeeVarsAndSave()
 ```

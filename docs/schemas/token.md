@@ -35,11 +35,15 @@ Entity to stores the metadata and token level metrics for a token present in any
 |[getTrackedAmountUSD()](../functions-n-handlers/utils/pricing.ts#gettrackedamountusd)||<center>:white_check_mark:</center>|||
 |[updateTokenDayData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetokendaydata)||<center>:white_check_mark:</center>|||
 |[updateTokenHourData()](../functions-n-handlers/utils/intervalUpdates.ts#updatetokenhourdata)||<center>:white_check_mark:</center>|||
-|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleInitialize()](../functions-n-handlers/mappings/core.ts#handleinitialize)||<center>:white_check_mark:*</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleMint()](../functions-n-handlers/mappings/core.ts#handlemint)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
-|[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:*</center>|
 |[handlePoolCreated()](../functions-n-handlers/mappings/factory.ts#handlepoolcreated)|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleIncreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handleincreaseliquidity)||<center>:white_check_mark:</center>|||
 |[handleDecreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handledecreaseliquidity)||<center>:white_check_mark:</center>|||
 |[handleCollect()](../functions-n-handlers/mappings/position-manager.ts#handlecollect)||<center>:white_check_mark:</center>|||
+|[populateToken()\*](../functions-n-handlers/utils/backfill.ts#populatetoken)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[populateEmptyPools()\*](../functions-n-handlers/utils/backfill.ts#populateemptypools)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+
+\* -> Different across chains
