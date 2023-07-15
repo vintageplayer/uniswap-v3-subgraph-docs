@@ -59,5 +59,6 @@ Entity to store a pool's metadata, current & lifetime metrics and links to event
 |[handleBurn()](../functions-n-handlers/mappings/core.ts#handleburn)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleSwap()](../functions-n-handlers/mappings/core.ts#handleswap)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 |[handleFlash()](../functions-n-handlers/mappings/core.ts#handleflash)|||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[populateEmptyPools()\*](../functions-n-handlers/utils/backfill.ts#populateemptypools)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 
 \* -> Different across chains

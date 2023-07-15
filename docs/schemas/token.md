@@ -43,5 +43,7 @@ Entity to stores the metadata and token level metrics for a token present in any
 |[handleIncreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handleincreaseliquidity)||<center>:white_check_mark:</center>|||
 |[handleDecreaseLiquidity()](../functions-n-handlers/mappings/position-manager.ts#handledecreaseliquidity)||<center>:white_check_mark:</center>|||
 |[handleCollect()](../functions-n-handlers/mappings/position-manager.ts#handlecollect)||<center>:white_check_mark:</center>|||
+|[populateToken()\*](../functions-n-handlers/utils/backfill.ts#populatetoken)|<center>:white_check_mark:</center>||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
+|[populateEmptyPools()\*](../functions-n-handlers/utils/backfill.ts#populateemptypools)||<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|<center>:white_check_mark:</center>|
 
 \* -> Different across chains

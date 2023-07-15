@@ -8,7 +8,7 @@ Following Entity Types are defined in the graph [schema file](https://github.com
 
 ||Entity|Description|Schema differs with chain|
 |-|-|-|-|
-|1.|[Factory](./schemas/factory.md) | Captures metrics for all the pools deployed by a specific [factory contract](./contracts/factory). ||
+|1.|[Factory](./schemas/factory.md) | Captures metrics for all the pools deployed by a specific [factory contract](./contracts/factory). |<center>:white_check_mark:</center>|
 |2.|[Bundle](./schemas/bundle) | Stores the current Eth price in USD. ||
 |3.|[Token](./schemas/token) | Stores the metadata and token level metrics for a token present in any of the pools. ||
 |4.|[Pool](./schemas/pool) | Stores a pool's metadata, current & lifetime metrics and links to events and hourly/daily metrics and references to it's tick entities. |<center>:white_check_mark:</center>|
