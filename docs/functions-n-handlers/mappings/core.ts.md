@@ -38,7 +38,7 @@ ReturnType: void
 1. [Initialize Event (Handler)](../../events)
 
 </TabItem>
-<TabItem value="Polygon" lable="Polygon">
+<TabItem value="Polygon, Optimism" lable="Polygon, Optimism">
 
 - Follows the logic of update, but doesn't save the `pool` entity.
 
@@ -96,6 +96,9 @@ Params:
 
 ReturnType: void
 ```
+<Tabs>
+    <TabItem value="Other-Chains" lable="Other-Chains">
+
 - updates `txCount`, `totalValueLockedETH` and `totalValueLockedUSD` metrics for `pool`, `factory` and `token` entities.
 - Decreases `pool.liquidity` by `event.params.amount` if the current `pool.tick` value is within the burnt tick range.
 - Creates a new `Burn` entity using `transaction.id` and `pool.txCount` as `mint.id`. Sets the values from `event` parameters.
@@ -125,6 +128,18 @@ ReturnType: void
 
 #### Invoked at:
 1. [Burn Event (Handler)](../../events)
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+Most of the logic is same as mainnet subgraph with following changes:
+- While loading the `Tick` entities, if either one is not found, invokes `createTickBurn()` to create ticks and then proceeds with updating the liquidity values and metrics.
+
+### Additional Dependencies
+1. [createTickBurn()](../utils/tick.ts#createtickburn)
+
+</TabItem>
+</Tabs>
 
 ### handleSwap()
 ```

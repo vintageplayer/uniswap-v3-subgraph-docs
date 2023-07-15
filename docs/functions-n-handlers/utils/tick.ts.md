@@ -21,7 +21,7 @@ ReturnType: Tick
 <Tabs>
 <TabItem value="Other Chains" lable="Other-Chains">
 
-Initializes a new Tick to store the liquidity present in at the specific tick.
+Initializes a new Tick to store the liquidity present at the specific tick.
 
 Sets `tick.id`, `tick.tickIdx`, `tick.pool` and `tick.poolId` from the parametrs. Sets `tick.creatdAtTimeStamp` and `tick.createdAtBlockNumber` from `event.block.timestamp` and `event.block.number` respectively.
 
@@ -49,6 +49,42 @@ All the other parameters are initialized to `ZERO_BD` or `ZERO_BI`.
 
 </TabItem>
 </Tabs>   
+
+### createTickBurn()
+:::info Only in Optimism
+This function exists only in optimism subgraph
+:::
+```
+Params:
+ - tickId (String): ID of the tick instance to initialize. Format: <pool address>#<tick index>
+ - tickIdx (i32): Tick index
+ - poolId (string): PoolId
+ - event (MintEvent): The event where the liquidity from the tick is removed
+
+ReturnType: Tick
+```
+
+Instantiate a tick that already exists from previous transactions.
+
+- Uses the same logic as [createTick()](#createtick) to initialize a new tick entity
+- Later reads the Pool contract ticks data for `tickIdx` and sets the `tick.liquidityGross`, `tick.liquidityNet`, `tick.feeGrowthOutside0X128` and `tick.feeGrowthOutside1X128` vlaues.
+
+#### Entites:
+1. [Tick](../../schemas/tick.md) - Create * Write
+
+#### ABI Dependencies:
+1. pool.json
+
+#### Dependencies:
+1. [ZERO_BI](./constants.ts#zero_bi)
+2. [ONE_BD](./constants.ts#one_bd)
+3. [ZERO_BD](./constants.ts#zero_bd)
+4. [bigDecimalExponated()](./index.ts#bigdecimalexponated)
+5. [safeDiv()](./index.ts#safediv)
+
+#### Invoked at:
+1. [handleBurn()](../mappings/core.ts#handleburn)
+
 
 ### feeTierToTickSpacing()
 ```

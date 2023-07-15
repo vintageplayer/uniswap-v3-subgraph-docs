@@ -164,6 +164,9 @@ Params:
 
 ReturnType: BigDecimal
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 If exchangeDecimals is `ZERO_BI`, returns tokenAmount after converting to BigDecimal. Else divides the BigDecimal tokenAmount using 10 raised to `exchangeDecimals` as the denominator.
 
 #### Dependencies:
@@ -177,6 +180,15 @@ If exchangeDecimals is `ZERO_BI`, returns tokenAmount after converting to BigDec
 4. [handleIncreaseLiquidity()](../mappings/position-manager.ts#handleincreaseliquidity)
 5. [handleDecreaseLiquidity()](../mappings/position-manager.ts#handledecreaseliquidity)
 6. [handleCollect()](../mappings/position-manager.ts#handlecollect)
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+#### Additionally Invoked At:
+1. [populateEmptyPools()](./backfill.ts#populateemptypools)
+
+</TabItem>
+</Tabs>
 
 ### convertEthToDecimal()
 ```

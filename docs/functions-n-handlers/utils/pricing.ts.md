@@ -31,6 +31,13 @@ path: [`/src/utils/pricing.ts`](https://github.com/Uniswap/v3-subgraph/blob/main
 - value: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
 ```
 </TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+```
+- type: string
+- value: '0x4200000000000000000000000000000000000006'
+```
+</TabItem>
 </Tabs>
 Address of wrapped-ETH (WETH) contract on ethereum mainnet.
 
@@ -46,6 +53,12 @@ Address of wrapped-ETH (WETH) contract on ethereum mainnet.
 - type: string
 - value: '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8'
 ```
+
+Address of Uniswap V3 pool contract between `USDC` and `WETH` `ERC-20` tokens on the specific chain.
+
+#### Referenced at:
+1. [getEthPriceInUSD](#getethpriceinusd)
+
 </TabItem>
 <TabItem value="Polygon" lable="Polygon">
 
@@ -61,11 +74,36 @@ Address of wrapped-ETH (WETH) contract on ethereum mainnet.
 - value: '0x17c14d2c404d167802b16c450d3c99f88f2c4f4d'
 ```
 </TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+- Not present. Instead refer [DAI_WETH_03_POOL](#dai_weth_03_pool)
+
+</TabItem>
 </Tabs>
-Address of Uniswap V3 pool contract between `USDC` and `WETH` `ERC-20` tokens on ethereum mainnet.
+
+### DAI_WETH_03_POOL
+
+<Tabs>
+<TabItem value="Optimism" lable="Optimism">
+
+```
+- type: string
+- value: '0x03af20bdaaffb4cc0a521796a223f7d85e2aac31'
+```
+
+Address of Uniswap V3 pool contract between `DAI` and `WETH` `ERC-20` tokens on optimsim mainnet.
 
 #### Referenced at:
 1. [getEthPriceInUSD](#getethpriceinusd)
+
+</TabItem>
+<TabItem value="Other-Chains" lable="Other-Chains">
+
+- Not present. Instead refer [USDC_WETH_03_POOL](#usdc_weth_03_pool)
+
+</TabItem>
+</Tabs>
+
 
 ### WHITELIST_TOKENS
 A list of tokens which have considerable usage and are likely to have pool pairing with other tokens. These can be used for calculating liquidity in USD by using the tokens price in USD.
@@ -98,6 +136,14 @@ The following token addresses are present in the list:
 |MATIC|[0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0](https://etherscan.io/address/0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0)|
 |AAVE|[0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9](https://etherscan.io/address/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9)|
 |sETH2|[0xfe2e637202056d30016725477c5da089ab0a043a](https://etherscan.io/address/0xfe2e637202056d30016725477c5da089ab0a043a)|
+
+#### Dependencies:
+1. [WETH_ADDRESS](#weth_address)
+
+#### Referenced at:
+1. [getTrackedAmountUSD](#gettrackedamountusd)
+2. [handlePoolCreated()](../mappings/factory.ts#handlepoolcreated)
+
 </TabItem>
 <TabItem value="Polygon" lable="Polygon">
 
@@ -110,7 +156,6 @@ The following token addresses are present in the list:
 </TabItem>
 <TabItem value="Arbitrum-One" lable="Arbitrum-one">
 
-
 |Symbol|Address|
 |-|-|
 |WETH|`WETH_ADDRESS`*|
@@ -118,16 +163,26 @@ The following token addresses are present in the list:
 |DAI|[0xda10009cbd5d07dd0cecc66161fc93d7c9000da1](https://arbiscan.io/address/0xda10009cbd5d07dd0cecc66161fc93d7c9000da1)|
 |USDT|[0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9](https://arbiscan.io/address/0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9)|
 </TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+|Symbol|Address|
+|-|-|
+|WETH|`WETH_ADDRESS`*|
+|DAI|[0xda10009cbd5d07dd0cecc66161fc93d7c9000da1](https://optimistic.etherscan.io/address/0xda10009cbd5d07dd0cecc66161fc93d7c9000da1)|
+|OP|[0x4200000000000000000000000000000000000042](https://optimistic.etherscan.io/address/0x4200000000000000000000000000000000000042)|
+|USDC|[0x7f5c764cbc14f9669b88837ca1490cca17c31607](https://optimistic.etherscan.io/address/0x7f5c764cbc14f9669b88837ca1490cca17c31607)|
+|PERP|[0x9e1028f5f1d5ede59748ffcee5532509976840e0](https://optimistic.etherscan.io/address/0x9e1028f5f1d5ede59748ffcee5532509976840e0)|
+|LYRA|[0x50c5725949a6f0c72e6c4a641f24049a917db0cb](https://optimistic.etherscan.io/address/0x50c5725949a6f0c72e6c4a641f24049a917db0cb)|
+|USDT|[0x94b008aa00579c1307b0ef2c499ad98a8ce58e58](https://optimistic.etherscan.io/address/0x94b008aa00579c1307b0ef2c499ad98a8ce58e58)|
+|WBTC|[0x68f180fcce6836688e9084f035309e29bf0a2095](https://optimistic.etherscan.io/address/0x68f180fcce6836688e9084f035309e29bf0a2095)|
+
+#### Additional Referenced at:
+1. [populateEmptyPools()](./backfill.ts#populateemptypools)
+
+</TabItem>
 </Tabs>
 
 \* -> The value is imported from a variable and listed directly in the list declaration.
-
-#### Dependencies:
-1. [WETH_ADDRESS](#weth_address)
-
-#### Referenced at:
-1. [getTrackedAmountUSD](#gettrackedamountusd)
-2. [handlePoolCreated()](../mappings/factory.ts#handlepoolcreated)
 
 ### STABLE_COINS
 A list of ERC20 token contract addresses which have stable coin prices, i.e., 1 token expected to be valued at 1 USD.
@@ -142,6 +197,10 @@ A list of ERC20 token contract addresses which have stable coin prices, i.e., 1 
 |TUSD|[0x0000000000085d4780b73119b644ae5ecd22b376](https://etherscan.io/address/0x0000000000085d4780b73119b644ae5ecd22b376)|
 |FEI|[0x956f47f50a910163d8bf957cf5846d573e7f87ca](https://etherscan.io/address/0x956f47f50a910163d8bf957cf5846d573e7f87ca)|
 |PRINTS|[0x4dd28568d05f09b02220b09c2cb307bfd837cb95](https://etherscan.io/address/0x4dd28568d05f09b02220b09c2cb307bfd837cb95)|
+
+#### Referenced at:
+1. [findEthPertoken()](#findethpertoken)
+
 </TabItem>
 <TabItem value="Polygon" lable="Polygon">
 
@@ -155,10 +214,12 @@ A list of ERC20 token contract addresses which have stable coin prices, i.e., 1 
 - `STABLE_COINS` is not defined for arbitrum-one subgraph.
 
 </TabItem>
-</Tabs>
+<TabItem value="Optimism" lable="Optimism">
 
-#### Referenced at:
-1. [findEthPertoken()](#findethpertoken)
+- `STABLE_COINS` is not defined for optimism subgraph.
+
+</TabItem>
+</Tabs>
 
 ### MINIMUM_ETH_LOCKED
 <Tabs>
@@ -190,6 +251,14 @@ While calculating token price in USD, the value of other token locked in the poo
 
 #### Additionally Referenced at:
 1. [getEthPriceInUSD()](#getethpriceinusd)
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+```
+ - type: BigDecimal
+ - value: 10
+```
 
 </TabItem>
 </Tabs>
@@ -253,7 +322,15 @@ Currently, the `token0Price` for the `pool` represented by `USDC_WETH_03_POOL`. 
 1. [MINIMUM_ETH_LOCKED](#minimum_eth_locked)
 
 </TabItem>
-</Tabs>   
+<TabItem value="Optimism" lable="Optimism">
+
+- Uses [DAI_WETH_03_POOL](#dai_weth_03_pool) instead of USDC
+
+#### Differing Dependencies:
+1. [DAI_WETH_03_POOL](#dai_weth_03_pool)
+
+</TabItem>
+</Tabs>
 
 ### findEthPerToken()
 ```

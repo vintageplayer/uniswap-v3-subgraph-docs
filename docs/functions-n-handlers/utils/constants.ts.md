@@ -38,6 +38,8 @@ Represents the null address in ethereum.
 - type: BigInt
 - value: 0
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
 
 #### Referenced at:
 1. [updatePoolDayData()](./intervalUpdates.ts#updatepooldaydata)
@@ -52,6 +54,16 @@ Represents the null address in ethereum.
 10. [createTick()](./tick.ts#createtick)
 11. [getPosition()](../mappings/position-manager.ts#getposition)
 12. [handleSwap()](../mappings/core.ts#handleswap)
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+#### Additionally Invoked At:
+1. [populateToken()](./backfill.ts#populatetoken)
+2. [populateEmptyPools()](./backfill.ts#populateemptypools)
+
+</TabItem>
+</Tabs>
 
 ### ONE_BI
 ```
@@ -94,6 +106,9 @@ Represents the null address in ethereum.
 - value: 0
 ```
 
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 #### Referenced at:
 1. [updatePoolDayData()](./intervalUpdates.ts#updatepooldaydata)
 2. [updatePoolHourData()](./intervalUpdates.ts#updatepoolhourdata)
@@ -108,6 +123,16 @@ Represents the null address in ethereum.
 11. [createTick()](./tick.ts#createtick)
 12. [getPosition()](../mappings/position-manager.ts#getposition)
 13. [handleSwap()](../mappings/core.ts#handleswap)
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+#### Additionally Invoked At:
+1. [populateToken()](./backfill.ts#populatetoken)
+2. [populateEmptyPools()](./backfill.ts#populateemptypools)
+
+</TabItem>
+</Tabs>
 
 ### ONE_BD
 ```

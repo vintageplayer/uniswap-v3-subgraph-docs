@@ -35,7 +35,15 @@ Returns the string value representing the ERC20 symbol read from the contract wi
 </TabItem>
 <TabItem value="Arbitrum-One" lable="Arbitrum-One">
 
-- Logic similar to mainnet except uses statisTokenDefition first and proceeds to read from contract if not found.
+- Logic similar to mainnet except uses `StaticTokenDefition` first and proceeds to read from contract if not found.
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+- Logic similar to mainnet except uses `StaticTokenDefition` first and proceeds to read from contract if not found.
+
+#### Additionally Invoked At:
+1. [populateToken()](./backfill.ts#populatetoken)
 
 </TabItem>
 </Tabs>   
@@ -67,7 +75,15 @@ Returns the string value representing the ERC20 name read from the contract with
 </TabItem>
 <TabItem value="Arbitrum-One" lable="Arbitrum-One">
 
-- Logic similar to mainnet except uses statisTokenDefition first and proceeds to read from contract if not found.
+- Logic similar to mainnet except uses `StaticTokenDefition` first and proceeds to read from contract if not found.
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+- Logic similar to mainnet except uses `StaticTokenDefition` first and proceeds to read from contract if not found.
+
+#### Additionally Invoked At:
+1. [populateToken()](./backfill.ts#populatetoken)
 
 </TabItem>
 </Tabs>   
@@ -79,6 +95,9 @@ Params:
 
 ReturnType: BigInt
 ```
+<Tabs>
+<TabItem value="Other Chains" lable="Other-Chains">
+
 Queries the ERC20 contract with address `tokenAddress` and returns total token supply using `totalSupply()` method. If call reverts, typecasts `null` to i32 then to BigDecimal and returns the value.
 
 #### ABI Dependencies:
@@ -87,6 +106,14 @@ Queries the ERC20 contract with address `tokenAddress` and returns total token s
 #### Invoked at:
 1. [handlePoolCreated()](../mappings/factory.ts#handlepoolcreated)
 
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+#### Additionally Invoked At:
+1. [populateToken()](./backfill.ts#populatetoken)
+
+</TabItem>
+</Tabs>
 
 ### fetchTokenDecimals()
 ```
@@ -113,7 +140,15 @@ Queries the ERC20 contract with address `tokenAddress` and returns the decimals 
 </TabItem>
 <TabItem value="Arbitrum-One" lable="Arbitrum-One">
 
-- Logic similar to mainnet except uses statisTokenDefition first and proceeds to read from contract if not found.
+- Logic similar to mainnet except uses `StaticTokenDefition` first and proceeds to read from contract if not found.
 
 </TabItem>
-</Tabs>   
+<TabItem value="Optimism" lable="Optimism">
+
+- Logic similar to mainnet except uses `StaticTokenDefition` first and proceeds to read from contract if not found.
+
+#### Additionally Invoked At:
+1. [populateToken()](./backfill.ts#populatetoken)
+
+</TabItem>
+</Tabs>

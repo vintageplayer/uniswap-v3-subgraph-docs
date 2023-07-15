@@ -20,6 +20,9 @@ Params:
 
 ReturnType: Position | null
 ```
+<Tabs>
+    <TabItem value="Eth Mainnet" lable="Eth Mainnet">
+
 - Returns a `Position` entity for the given `tokenId` if found.
 - If not found, retrieves a position by directly querying the `NonfungiblePositionManager` contract using the ABI. Invokes `factoryContract.getPool()` and passing it the `position`'s parameters `token0`, `token1` and `fee` to find the `pool` contract address.
 - Then creates a new position entity for the tokenId and set the metadata properties using `position` read earlier from the `NonfungiblePositionManager` contract. Sets the metrics to `ZERO_BD`. 
@@ -46,6 +49,15 @@ In certain scenarios, the position is minted and burnt within the same block. Th
 2. [handleDecreaseLiquidity()](#handledecreaaseliquidity)
 3. [handleCollect()](#handlecollect)
 4. [handleTransfer()](#handletransfer)
+
+</TabItem>
+<TabItem value="Polygon, Optimism" lable="Polygon, Optimism">
+In addition to mainnet:
+
+- initializes `position.collectedToken0` and `position.collectedToken1` values.
+
+</TabItem>
+</Tabs>
 
 ### updateFeeVars()
 ```
@@ -135,6 +147,17 @@ Follows most of the logic of mainnet except the following points:
 1. [Bundle](../../schemas/bundle) - Read
 
 </TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+Follows most of the logic of mainnet except the following points:
+
+- No blocks ingored like mainnet.
+- Returns without any changes if token0 or token1 entities are null.
+
+#### Additional Entities Referenced
+1. [Bundle](../../schemas/bundle) - Read
+
+</TabItem>
 </Tabs>
 
 ### handleDecreaseLiquidity()
@@ -181,6 +204,17 @@ Follows most of the logic of mainnet except the following points:
 1. [Bundle](../../schemas/bundle) - Read
 
 </TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+Follows most of the logic of mainnet except the following points:
+
+- No blocks ingored like mainnet.
+- Returns without any changes if token0 or token1 entities are null.
+
+#### Additional Entities Referenced
+1. [Bundle](../../schemas/bundle) - Read
+
+</TabItem>
 </Tabs>
 
 ### handleCollect()
@@ -209,23 +243,6 @@ ReturnType: void
 1. [Position](../../schemas/position) - Write
 2. [Token](../../schemas/token) - Read
 
-</TabItem>
-<TabItem value="Polygon" lable="Polygon">
-
-- Fetches the position entity using `getPosition()`, passing `event.params.tokenId` and `event` as parameters.
-- Updates fields `position.collectedToken0` and `position.collectedToken1` by adding the `event.params.amount0` and `event.params.amount1` after adjusting them with `token.decimals`.
-- Updates fields `position.collectedFeesToken0` and `position.collectedFeesToken1` by subtracting `position.withdrawnToken` from `position.collectedToken`.
-- Updates field `position.amountCollectedUSD` by deriving `amount0` and `amount1` in their respective USD priced using `bundle.ethPriceUSD` and `token.derivedETH` and adding to the existing value.
-- Triggers `updateFeeVars()` and `savePositionSnapshot()`
-
-#### Entities
-1. [Position](../../schemas/position) - Write
-2. [Token](../../schemas/token) - Read
-3. [Bundle](../../schemas/bundle) - Read
-
-</TabItem>
-</Tabs>
-
 #### Dependencies:
 1. [getPosition()](#getposition)
 2. [convertTokenToDecimal()](../utils/index.ts#converttokentodecimal)
@@ -234,6 +251,32 @@ ReturnType: void
 
 #### Invoked at:
 1. [Collect Event (Handler)](../../events)
+
+</TabItem>
+<TabItem value="Polygon" lable="Polygon">
+
+Differs from mainnet at the following areas:
+- Updates fields `position.collectedToken0` and `position.collectedToken1` by adding the `event.params.amount0` and `event.params.amount1` after adjusting them with `token.decimals`.
+- Updates fields `position.collectedFeesToken0` and `position.collectedFeesToken1` by subtracting `position.withdrawnToken` from `position.collectedToken`.
+- Updates field `position.amountCollectedUSD` by deriving `amount0` and `amount1` in their respective USD priced using `bundle.ethPriceUSD` and `token.derivedETH` and adding to the existing value.
+
+#### Additional Entities
+1. [Bundle](../../schemas/bundle) - Read
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+Differs from mainnet at the following areas:
+- Returns without any changes if token0 or token1 entities are null.
+- Updates fields `position.collectedToken0` and `position.collectedToken1` by adding the `event.params.amount0` and `event.params.amount1` after adjusting them with `token.decimals`.
+- Updates fields `position.collectedFeesToken0` and `position.collectedFeesToken1` by subtracting `position.withdrawnToken` from `position.collectedToken`.
+
+#### Additional Entities Referenced
+1. [Bundle](../../schemas/bundle) - Read
+
+</TabItem>
+
+</Tabs>
 
 ### handleTransfer()
 ```

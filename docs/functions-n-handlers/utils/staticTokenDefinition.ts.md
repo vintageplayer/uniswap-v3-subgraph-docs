@@ -52,6 +52,13 @@ Returns an `Array<StaticTokenDefinition>` object with the token definitions defi
 |0xff970a61a04b1ca14834a43f5de4533ebddb5cc8|USDC|USD Coin|6|
 
 </TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+|Address|Symbol|Name|Decimals|
+|-|-|-|-|
+|0x82af49447d8a07e3bd95bd0d56f35241523fbab1|WETH|Wrapped Ethereum|18|
+
+</TabItem>
 </Tabs>
 
 #### Invoked at:

@@ -40,7 +40,7 @@ While creating either of the tokens, if the decimals value is not available, the
 4. [Token](../../schemas/token) - Read/Create & Write
 
 #### Contracts
-5. [Pool (Template)](../../contracts/pool) - Create
+1. [Pool (Template)](../../contracts/pool) - Create
 
 #### Dependencies:
 1. [FACTORY_ADDRESS](../utils/constants.ts#factory_address)
@@ -61,6 +61,15 @@ While creating either of the tokens, if the decimals value is not available, the
 <TabItem value="Arbitrum-One" lable="Arbitrum-One">
 
 - Same logic as mainnet, but doesn't initialize `pool.feeGrowthGlobal0X128` and `pool.feeGrowthGlobal1X128` values.
+
+</TabItem>
+<TabItem value="Optimism" lable="Optimism">
+
+- If factory doesn't exists, initializes poolCount to `104` instead of `ZERO_BI` and `factory.populated` to `false`
+- Before saving the pool entity, if `factory.populated` is false, invokes `populateEmptyPools()` to load the pool before regenisis and sets `factory.populated = true`.
+
+### Additional Dependencies
+1. [populateEmptyPools()](../utils/backfill.ts#populateemptypools)
 
 </TabItem>
 </Tabs>
